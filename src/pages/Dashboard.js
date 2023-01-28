@@ -1,11 +1,17 @@
+import { Container, Box } from '@mui/material'
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 function Dashboard() {
-
     return (
-        <div>
-            Dashboard
-        </div>
+        <>
+            <Navbar />
+            <Box sx={{ bgcolor: "secondary.main" }}>
+                <Container maxWidth="lg" >
+                    Dashboard
+                </Container>
+            </Box>
+        </>
     )
 }
 

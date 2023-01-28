@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
-
+import { getFirestore } from 'firebase/firestore/lite';
 import toast from 'react-hot-toast';
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -13,9 +13,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 
 const auth = getAuth();
-
 export const login = async (email, password) => {
     try {
         const { user } = await signInWithEmailAndPassword(auth, email, password);
