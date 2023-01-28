@@ -1,0 +1,2 @@
+Giris ekrani yapildi.
+Admin paneline basla.
