@@ -1,4 +1,4 @@
-import { Container, Box } from '@mui/material'
+import { Container, Box, Typography, Grid, CardContent, Card } from '@mui/material'
 import React, { useContext, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import UserContext from '../context/UserContext'
@@ -20,13 +20,31 @@ function Dashboard() {
         <>
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
-                <Container maxWidth="lg" >
-                    Dashboard
-                    {products.length !== 0 ? products.map((product, key) => (
-                        <Box key={key}>{product.name}</Box>
-                    )) :
-                        "Henuz hicbisi yok"}
+                <Container sx={{ paddingTop: "40px" }}>
+                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                        {products.length !== 0 ? products.map((product, key) => (
+                            <Grid item xs={12} sm={6} md={4} lg={3}>
+                                <Card sx={{ minWidth: 240 }} key={key}>
+                                    <img
+                                        style={{ width: "100%", height: "240px" }}
+                                        src={product.image}
+                                        title={product.name}
+                                    />
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div">
+                                            {product.name}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {product.description}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        )) :
+                            "Henuz hicbisi yok"}
+                    </Grid>
                 </Container>
+
             </Box>
         </>
     )

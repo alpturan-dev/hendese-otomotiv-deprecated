@@ -55,7 +55,6 @@ function AdminPanel() {
         const imageRef = ref(storage, `images/${newProductImage.name + v4()}`);
         uploadBytes(imageRef, newProductImage).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
-                // setImageUrls((prev) => [...prev, url]);
                 setNewProductImage(url);
                 toast.success("Resim yüklendi!");
             });
@@ -68,7 +67,6 @@ function AdminPanel() {
             console.log(e.message);
         }
         setProducts([...products, { image: newProductImage, name: newProductName, description: newProductDescription }]);
-        console.log("add producttaki products", products);
         setNewProductName(null);
         setNewProductImage(null);
         setNewProductDescription(null);
@@ -81,14 +79,11 @@ function AdminPanel() {
         await deleteDoc(userDoc);
         const deleteRef = ref(storage, product.image);
         deleteObject(deleteRef).then(() => {
-            toast.success("Urun silindi!")
+            toast.success("Ürün silindi!")
         }).catch((error) => {
-            toast.error("Urun silinemedi!" + error.message)
+            toast.error("Ürün silinemedi!" + error.message)
         });
         setProducts(products.filter((item) => item.id !== product.id));
-        setTimeout(() => {
-            window.location.reload();
-        }, 1000);
     }
 
     return (
@@ -128,16 +123,16 @@ function AdminPanel() {
                             <Button onClick={handleOpen}
                                 sx={{
                                     gap: "10px",
-                                    backgroundColor: "#ED3137", color: "white", padding: "15px 12px", fontSize: "1rem",
+                                    backgroundColor: "#1D7091", color: "white", padding: "15px 12px", fontSize: "1rem",
                                     '&:hover': {
-                                        backgroundColor: "#ED3137",
+                                        backgroundColor: "#1D7091",
                                         color: "white",
                                         opacity: "0.9"
                                     }
                                 }}
                             >
                                 <AddBoxRoundedIcon />
-                                <Typography variant="h6">Ürün Ekle</Typography>
+                                <Typography variant="subtitle1">Ürün Ekle</Typography>
                             </Button>
                             <Modal
                                 open={open}
@@ -180,9 +175,9 @@ function AdminPanel() {
                                         <Typography>{newProductImage ? "Dosya secildi!" : "Bir dosya secin"}</Typography>
                                     </label>
                                     <Button sx={{
-                                        backgroundColor: "#ED3137", color: "white", padding: "8px 6px", fontSize: "0.8rem",
+                                        backgroundColor: "#1D7091", color: "white", padding: "8px 6px", fontSize: "0.8rem",
                                         '&:hover': {
-                                            backgroundColor: "#ED3137",
+                                            backgroundColor: "#1D7091",
                                             color: "white",
                                             opacity: "0.9"
                                         }
@@ -210,9 +205,9 @@ function AdminPanel() {
                                         fullWidth
                                     />
                                     <Button onClick={addProduct} sx={{
-                                        backgroundColor: "#ED3137", color: "white", padding: "15px 12px", fontSize: "1.1rem",
+                                        backgroundColor: "#1D7091", color: "white", padding: "15px 12px", fontSize: "1.1rem",
                                         '&:hover': {
-                                            backgroundColor: "#ED3137",
+                                            backgroundColor: "#1D7091",
                                             color: "white",
                                             opacity: "0.9"
                                         }
@@ -226,17 +221,23 @@ function AdminPanel() {
                             <Table sx={{ minWidth: 1050 }} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>Ürün Resmi</TableCell>
-                                        <TableCell align="left">Ürün Adı</TableCell>
-                                        <TableCell align="left">Ürün Açıklaması</TableCell>
-                                        <TableCell align="left"></TableCell>
+                                        <TableCell sx={{ fontSize: "1rem", fontWeight: "bolder" }}>Ürün Resmi</TableCell>
+                                        <TableCell sx={{ fontSize: "1rem", fontWeight: "bolder" }} align="left">Ürün Adı</TableCell>
+                                        <TableCell sx={{ fontSize: "1rem", fontWeight: "bolder" }} align="left">Ürün Açıklaması</TableCell>
+                                        <TableCell sx={{ fontSize: "1rem", fontWeight: "bolder" }} align="left"></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {products ? products.map((product, index) => (
+                                    {products.length !== 0 ? products.map((product, index) => (
                                         <TableRow
                                             key={index}
-                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                            sx={{
+                                                transition: "all 0.5s",
+                                                '&:last-child td, &:last-child th': { border: 0 },
+                                                '&:hover': {
+                                                    background: "#ddd"
+                                                }
+                                            }}
                                         >
                                             <TableCell component="th" scope="row">
                                                 <img style={{ width: "200px", height: "200px" }} src={product.image} alt={product.image}></img>
@@ -249,7 +250,7 @@ function AdminPanel() {
                                                 }}
                                                     sx={{
                                                         gap: "10px",
-                                                        backgroundColor: "#ED3137", color: "white", padding: "20px 15px", fontSize: "1rem",
+                                                        backgroundColor: "#ED3137", color: "white", padding: "15px 10px", fontSize: "0.8rem",
                                                         '&:hover': {
                                                             backgroundColor: "#ED3137",
                                                             color: "white",
@@ -262,7 +263,7 @@ function AdminPanel() {
                                             </TableCell>
                                         </TableRow>
                                     )) :
-                                        <Box sx={{ padding: "20px 10px" }}>Henüz hicbir ürün eklenmedi.</Box>}
+                                        <Box sx={{ padding: "20px 10px" }}>Henüz hiçbir ürün eklenmedi.</Box>}
                                 </TableBody>
                             </Table>
                         </TableContainer>
