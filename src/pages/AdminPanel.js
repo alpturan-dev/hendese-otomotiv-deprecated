@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, CssBaseline, Container, Box, Typography, Button, TableCell, TableRow, TableBody, Paper, Table, TableHead, TableContainer, TextField } from '@mui/material';
 import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
-import { logout, db } from '../firebase'
+import DeleteIcon from '@mui/icons-material/Delete';
+import { logout, db, storage } from '../firebase'
+import { v4 } from "uuid";
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore/lite';
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject
+} from "firebase/storage";
 import { useContext } from 'react';
 import UserContext from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 function AdminPanel() {
     const navigate = useNavigate();
-    const { email, setEmail, password, setPassword } = useContext(UserContext);
+    const { email, setEmail, password, setPassword, products, setProducts } = useContext(UserContext);
     const handleLogout = async () => {
         await logout();
         setEmail(null);
@@ -19,44 +28,77 @@ function AdminPanel() {
             return navigate('/login');
         }, 1000)
     }
-    const [products, setProducts] = useState([]);
-    const productsRef = collection(db, "cities");
+    const productsRef = collection(db, "products");
     useEffect(() => {
         if (email === null && password === null) {
             return navigate('/login');
         }
-        const getCities = async () => {
+        const getProducts = async () => {
             const data = await getDocs(productsRef);
             const displaydata = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             setProducts(displaydata);
             console.log(displaydata);
         }
-        getCities();
+        getProducts();
     }, [])
 
     //Modal
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [newProductImage, setNewProductImage] = useState("https://via.placeholder.com/150");
+    const [newProductImage, setNewProductImage] = useState(null);
     const [newProductName, setNewProductName] = useState("");
     const [newProductDescription, setNewProductDescription] = useState("");
 
+    const uploadImage = async () => {
+        if (newProductImage == null) return;
+        const imageRef = ref(storage, `images/${newProductImage.name + v4()}`);
+        uploadBytes(imageRef, newProductImage).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                // setImageUrls((prev) => [...prev, url]);
+                setNewProductImage(url);
+                toast.success("Resim yüklendi!");
+            });
+        });
+    }
     const addProduct = async () => {
-        await addDoc(productsRef, { image: newProductImage, name: newProductName, description: newProductDescription });
+        try {
+            await addDoc(productsRef, { image: newProductImage, name: newProductName, description: newProductDescription });
+        } catch (e) {
+            console.log(e.message);
+        }
+        setProducts([...products, { image: newProductImage, name: newProductName, description: newProductDescription }]);
+        console.log("add producttaki products", products);
+        setNewProductName(null);
+        setNewProductImage(null);
+        setNewProductDescription(null);
         setOpen(false);
-        window.location.reload();
+        toast.success("Ürün eklendi!");
     }
 
-    const deleteProduct = async (id) => {
-        const userDoc = doc(db, 'cities', id);
+    const deleteProduct = async (product) => {
+        const userDoc = doc(db, 'products', product.id);
         await deleteDoc(userDoc);
-        window.location.reload();
+        const deleteRef = ref(storage, product.image);
+        deleteObject(deleteRef).then(() => {
+            toast.success("Urun silindi!")
+        }).catch((error) => {
+            toast.error("Urun silinemedi!" + error.message)
+        });
+        setProducts(products.filter((item) => item.id !== product.id));
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
     }
+
     return (
         <React.Fragment>
             <CssBaseline />
             <Box sx={{ bgcolor: "secondary.main" }}>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                />
                 <Container maxWidth="lg" sx={{ marginTop: "10px" }}>
                     {/* Navbar */}
                     <Box
@@ -69,14 +111,13 @@ function AdminPanel() {
                             sx={{ display: "flex", alignItems: "center", gap: "40px" }}
                         >
                             <Typography variant="subtitle1">Hoşgeldiniz! {email}</Typography>
-                            <Button sx={{ padding: "10px 8px", fontSize: "1.1rem" }} onClick={handleLogout}>
+                            <Button sx={{ padding: "10px 8px", fontSize: "1.1rem", gap: "10px" }} onClick={handleLogout}>
                                 <Typography variant="subtitle1">Çıkış Yap</Typography>
                                 <ExitToAppRoundedIcon />
                             </Button>
                         </Box>
                     </Box>
                     {/* Content */}
-                    {/* <Box sx={{ padding: "20px 20px", border: "1px solid gray", borderRadius: "5px" }} key={key}>{product.name}</Box> */}
                     <Box maxWidth="lg" sx={{ marginTop: "20px", marginX: "auto", display: "flex", flexDirection: "column", justifyContent: "center", gap: "20px" }}>
                         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                             <Typography
@@ -84,7 +125,17 @@ function AdminPanel() {
                             >
                                 Ürünler
                             </Typography>
-                            <Button onClick={handleOpen} sx={{ padding: "10px 8px", fontSize: "1.1rem" }}>
+                            <Button onClick={handleOpen}
+                                sx={{
+                                    gap: "10px",
+                                    backgroundColor: "#ED3137", color: "white", padding: "15px 12px", fontSize: "1rem",
+                                    '&:hover': {
+                                        backgroundColor: "#ED3137",
+                                        color: "white",
+                                        opacity: "0.9"
+                                    }
+                                }}
+                            >
                                 <AddBoxRoundedIcon />
                                 <Typography variant="h6">Ürün Ekle</Typography>
                             </Button>
@@ -100,8 +151,8 @@ function AdminPanel() {
                                         top: '40%',
                                         left: '50%',
                                         transform: 'translate(-50%, -50%)',
-                                        width: "600px",
-                                        height: "600px",
+                                        width: "700px",
+                                        height: "700px",
                                         bgcolor: 'background.paper',
                                         border: '1px solid #ddd',
                                         borderRadius: "5px",
@@ -113,19 +164,39 @@ function AdminPanel() {
                                         alignItems: "center",
                                         justifyContent: "center"
                                     }}>
-                                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                                        Ürün Resmi Url'si
+                                    <Typography id="modal-modal-title" variant="h6" component="h2"
+                                        sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
+                                        Ürün Resmi
                                     </Typography>
-                                    <TextField required autoComplete="off" fullWidth disabled id="standard-basic" variant="standard"
-                                        defaultValue="https://via.placeholder.com/150"
-                                        onChange={(event) => setNewProductImage(event.target.value)} />
-                                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                                    <label style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "6px 12px", cursor: "pointer" }}>
+                                        <UploadFileIcon style={{ width: "50px", height: "50px" }} />
+                                        <input
+                                            type="file"
+                                            style={{ display: "none" }}
+                                            onChange={(event) => {
+                                                setNewProductImage(event.target.files[0]);
+                                            }}
+                                        />
+                                        <Typography>{newProductImage ? "Dosya secildi!" : "Bir dosya secin"}</Typography>
+                                    </label>
+                                    <Button sx={{
+                                        backgroundColor: "#ED3137", color: "white", padding: "8px 6px", fontSize: "0.8rem",
+                                        '&:hover': {
+                                            backgroundColor: "#ED3137",
+                                            color: "white",
+                                            opacity: "0.9"
+                                        }
+                                    }} onClick={uploadImage} size="small">RESMİ YÜKLE</Button>
+
+                                    <Typography id="modal-modal-title" variant="h6" component="h2"
+                                        sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
                                         Ürün Adı
                                     </Typography>
-                                    <TextField required autoComplete="off" fullWidth id="standard-basic" variant="standard"
+                                    <TextField required autoComplete="off" fullWidth id="standard-basic" variant="outlined"
                                         onChange={(event) => setNewProductName(event.target.value)}
                                     />
-                                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                                    <Typography id="modal-modal-title" variant="h6" component="h2"
+                                        sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
                                         Ürün Acıklaması
                                     </Typography>
                                     <TextField
@@ -134,13 +205,19 @@ function AdminPanel() {
                                         id="standard-multiline-static"
                                         multiline
                                         rows={4}
-                                        variant="standard"
+                                        variant="outlined"
                                         onChange={(event) => setNewProductDescription(event.target.value)}
                                         fullWidth
                                     />
-                                    <Button onClick={addProduct} sx={{ marginTop: "30px", padding: "10px 8px", fontSize: "1.1rem" }}>
-
-                                        <Typography variant="h6">Ekle</Typography>
+                                    <Button onClick={addProduct} sx={{
+                                        backgroundColor: "#ED3137", color: "white", padding: "15px 12px", fontSize: "1.1rem",
+                                        '&:hover': {
+                                            backgroundColor: "#ED3137",
+                                            color: "white",
+                                            opacity: "0.9"
+                                        }
+                                    }}>
+                                        <Typography variant="h6">Ürün Ekle</Typography>
                                     </Button>
                                 </Box>
                             </Modal>
@@ -149,32 +226,43 @@ function AdminPanel() {
                             <Table sx={{ minWidth: 1050 }} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell sx={{ color: "primary.main" }}>Ürün Resmi</TableCell>
-                                        <TableCell sx={{ color: "primary.main" }} align="left">Ürün Adı</TableCell>
-                                        <TableCell sx={{ color: "primary.main" }} align="left">Ürün Açıklaması</TableCell>
-                                        <TableCell sx={{ color: "primary.main" }} align="left"></TableCell>
+                                        <TableCell>Ürün Resmi</TableCell>
+                                        <TableCell align="left">Ürün Adı</TableCell>
+                                        <TableCell align="left">Ürün Açıklaması</TableCell>
+                                        <TableCell align="left"></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {products.map((product, index) => (
+                                    {products ? products.map((product, index) => (
                                         <TableRow
                                             key={index}
                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                         >
                                             <TableCell component="th" scope="row">
-                                                <img style={{ width: "150px", height: "150px" }} src={product.image} alt={product.image}></img>
+                                                <img style={{ width: "200px", height: "200px" }} src={product.image} alt={product.image}></img>
                                             </TableCell>
                                             <TableCell align="left">{product.name}</TableCell>
                                             <TableCell align="left">{product.description}</TableCell>
                                             <TableCell align="left">
                                                 <Button onClick={() => {
-                                                    deleteProduct(product.id);
-                                                }}>
-                                                    Sil
+                                                    deleteProduct(product);
+                                                }}
+                                                    sx={{
+                                                        gap: "10px",
+                                                        backgroundColor: "#ED3137", color: "white", padding: "20px 15px", fontSize: "1rem",
+                                                        '&:hover': {
+                                                            backgroundColor: "#ED3137",
+                                                            color: "white",
+                                                            opacity: "0.9"
+                                                        }
+                                                    }}>
+                                                    ÜRÜNÜ SİL
+                                                    <DeleteIcon />
                                                 </Button>
                                             </TableCell>
                                         </TableRow>
-                                    ))}
+                                    )) :
+                                        <Box sx={{ padding: "20px 10px" }}>Henüz hicbir ürün eklenmedi.</Box>}
                                 </TableBody>
                             </Table>
                         </TableContainer>
