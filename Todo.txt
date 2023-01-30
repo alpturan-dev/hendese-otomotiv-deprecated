@@ -1,2 +1,3 @@
-Giris ekrani yapildi.
-Admin paneline basla.
+Admin panelinde eksikler var. 
+Resim eklemeyi Firestore ve storage ile yapmayi dene.
+Admin panelin cikisinda bug var o duzeltlecke..

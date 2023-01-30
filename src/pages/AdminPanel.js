@@ -7,6 +7,7 @@ import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore/
 import { useContext } from 'react';
 import UserContext from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 function AdminPanel() {
     const navigate = useNavigate();
     const { email, setEmail, password, setPassword } = useContext(UserContext);
@@ -14,7 +15,9 @@ function AdminPanel() {
         await logout();
         setEmail(null);
         setPassword(null);
-        return navigate('/login');
+        setTimeout(() => {
+            return navigate('/login');
+        }, 1000)
     }
     const [products, setProducts] = useState([]);
     const productsRef = collection(db, "cities");
@@ -159,7 +162,7 @@ function AdminPanel() {
                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                         >
                                             <TableCell component="th" scope="row">
-                                                <img src={product.image} alt={product.image}></img>
+                                                <img style={{ width: "150px", height: "150px" }} src={product.image} alt={product.image}></img>
                                             </TableCell>
                                             <TableCell align="left">{product.name}</TableCell>
                                             <TableCell align="left">{product.description}</TableCell>
