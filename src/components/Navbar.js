@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded';
+import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../assets/logo.jpeg'
 import suzukilogo from '../assets/suzuki-logo.jpeg'
-import { CssBaseline, Container, Box, Typography, Link } from '@mui/material';
+import { CssBaseline, Container, Box, Typography, Link, Button } from '@mui/material';
 function Navbar() {
+    const [menu, setMenu] = useState(false);
+    const handleMenu = () => {
+        setMenu(!menu);
+        console.log("menu handled", menu);
+    }
     return (
         <React.Fragment>
             <CssBaseline />
@@ -12,7 +18,7 @@ function Navbar() {
                 sx={{
                     display: "flex",
                     justifyContent: "center",
-                    padding: "15px 0",
+                    padding: "10px 0",
                     backgroundColor: "primary.main",
                     color: "#fff",
                     transition: "0.5s",
@@ -21,9 +27,13 @@ function Navbar() {
                     },
                 }}
             >
-                <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                    <LocationOnRoundedIcon /> Arifbey, Hendese Otomotiv, Adnan Menderes Caddesi No:39/1, 54580 Arifiye/SAKARYA &emsp; &emsp;
-                    <PhoneInTalkRoundedIcon /> +90 553 265 47 34
+                <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", flexDirection: { xs: "column", sm: "column", md: "column", lg: "row" }, gap: "10px", fontSize: "0.8rem" }}>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                        <LocationOnRoundedIcon /> Arifbey, Hendese Otomotiv, Adnan Menderes Caddesi No:39/1, 54580 Arifiye/SAKARYA &emsp; &emsp;
+                    </Box>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                        <PhoneInTalkRoundedIcon /> +90 553 265 47 34
+                    </Box>
                 </Typography>
             </Box>
             <Box sx={{ bgcolor: "secondary.main" }}>
@@ -37,19 +47,13 @@ function Navbar() {
                             srcSet={`${logo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
                             alt={logo}
                             loading="lazy"
-                            style={{ width: "240px", height: "140px" }}
-                        />
-                        <img
-                            src={`${suzukilogo}?w=150&h=150&fit=crop&auto=format`}
-                            srcSet={`${suzukilogo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
-                            alt={logo}
-                            loading="lazy"
-                            style={{ width: "110px", height: "125px" }}
+                            style={{ width: "200px", height: "110px" }}
                         />
                     </Box>
-                    <Box>
-                        <ul
-                            style={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "1.1rem", fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "25px" }}
+                    <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <Button onClick={handleMenu} sx={{ marginY: "10px", display: { xs: "flex", sm: "flex", md: "none", lg: "none" }, alignItems: "center", color: "primary.main" }}><MenuIcon sx={{ width: "40px", height: "40px" }} /></Button>
+                        <Box
+                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.1rem" }, fontWeight: "bold", display: { xs: menu ? "flex" : "none", sm: menu ? "flex" : "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "15px" }}
                         >
                             <li>
                                 <Link href="#" sx={{
@@ -96,6 +100,9 @@ function Navbar() {
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
+                                    fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
+                                    textDecoration: "underline",
+                                    color: "primary.main",
                                     gap: "10px",
                                     transition: "0.5s",
                                     borderRadius: "5px",
@@ -113,6 +120,9 @@ function Navbar() {
                                     }
                                 }}>
                                     <Box sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
                                         transition: "transform 0.3s linear",
                                         '&:hover': {
                                             transform: "rotate(-45deg)"
@@ -123,7 +133,16 @@ function Navbar() {
                                 </Box>
                                 0553 265 47 34
                             </Box>
-                        </ul>
+                        </Box>
+                    </Box>
+                    <Box sx={{ display: { xs: "none", sm: "none", md: "none", lg: "flex" }, alignItems: "center" }}>
+                        <img
+                            src={`${suzukilogo}?w=150&h=150&fit=crop&auto=format`}
+                            srcSet={`${suzukilogo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
+                            alt={logo}
+                            loading="lazy"
+                            style={{ width: "100px", height: "115px" }}
+                        />
                     </Box>
                 </Container>
             </Box>

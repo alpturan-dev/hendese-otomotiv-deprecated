@@ -1,3 +1,13 @@
-Admin panelinde eksikler var. 
-Resim eklemeyi Firestore ve storage ile yapmayi dene.
-Admin panelin cikisinda bug var o duzeltlecke..
+Admin panelinde eksikler var. DONE
+Resim eklemeyi Firestore ve storage ile yapmayi dene. DONE
+Admin panelin cikisinda bug var o duzeltilecek.. DONE
+
+
+//Admin paneli
+Urun stok adedi, urun kodu (OEM kodu),fiyat kısmı,kategori kısmı eklenicek.
+
+//Dashboard
+Kategori icin dropdown menu yapılabilir.
+Dashboard -> slider,tum urunler,kategorilerine gore bolumler (tum urunler icin 3 satir falan gosterip butun urunleri goster butonu olabilir, ayni sekilde kategorilerine gore bolumler icin de)
+(daha sonra categorypage'e yonlendiririz)
+ProductPage yapilacak(ornek olarak muammer abi atti)
