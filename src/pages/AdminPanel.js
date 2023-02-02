@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, CssBaseline, Container, Box, Typography, Button, TableCell, TableRow, TableBody, Paper, Table, TableHead, TableContainer, TextField } from '@mui/material';
+import SearchAppBar from '../components/SearchBar';
 import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
@@ -19,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 function AdminPanel() {
     const navigate = useNavigate();
-    const { email, setEmail, password, setPassword, products, setProducts } = useContext(UserContext);
+    const { email, setEmail, password, setPassword, products, setProducts, input } = useContext(UserContext);
     const handleLogout = async () => {
         await logout();
         setEmail(null);
@@ -49,6 +50,10 @@ function AdminPanel() {
     const [newProductImage, setNewProductImage] = useState(null);
     const [newProductName, setNewProductName] = useState("");
     const [newProductDescription, setNewProductDescription] = useState("");
+    const [newProductStock, setNewProductStock] = useState("");
+    const [newProductOEM, setNewProductOEM] = useState("");
+    const [newProductPrice, setNewProductPrice] = useState("");
+    const [newProductCategory, setNewProductCategory] = useState("");
 
     const uploadImage = async () => {
         if (newProductImage == null) return;
@@ -62,14 +67,20 @@ function AdminPanel() {
     }
     const addProduct = async () => {
         try {
-            await addDoc(productsRef, { image: newProductImage, name: newProductName, description: newProductDescription });
+            await addDoc(productsRef,
+                { image: newProductImage, name: newProductName, description: newProductDescription, stock: newProductStock, oem: newProductOEM, price: newProductPrice, category: newProductCategory });
         } catch (e) {
             console.log(e.message);
         }
-        setProducts([...products, { image: newProductImage, name: newProductName, description: newProductDescription }]);
+        setProducts([...products,
+        { image: newProductImage, name: newProductName, description: newProductDescription, stock: newProductStock, oem: newProductOEM, price: newProductPrice, category: newProductCategory }]);
         setNewProductName(null);
         setNewProductImage(null);
         setNewProductDescription(null);
+        setNewProductStock(null);
+        setNewProductOEM(null);
+        setNewProductPrice(null);
+        setNewProductCategory(null);
         setOpen(false);
         toast.success("Ürün eklendi!");
     }
@@ -106,8 +117,18 @@ function AdminPanel() {
                             sx={{ display: "flex", alignItems: "center", gap: "40px" }}
                         >
                             <Typography variant="subtitle1">Hoşgeldiniz! {email}</Typography>
-                            <Button sx={{ padding: "10px 8px", fontSize: "1.1rem", gap: "10px" }} onClick={handleLogout}>
-                                <Typography variant="subtitle1">Çıkış Yap</Typography>
+                            <Button
+                                sx={{
+                                    padding: "10px 8px", fontSize: "1.1rem", gap: "10px", border: "1px solid primary.main",
+                                    gap: "5px",
+                                    backgroundColor: "#ED3137", color: "white", padding: "10px 20px", fontSize: "0.7rem",
+                                    '&:hover': {
+                                        backgroundColor: "#ED3137",
+                                        color: "white",
+                                        opacity: "0.9"
+                                    }
+                                }} onClick={handleLogout}>
+                                <Typography variant="subtitle1" >Çıkış Yap</Typography>
                                 <ExitToAppRoundedIcon />
                             </Button>
                         </Box>
@@ -115,25 +136,6 @@ function AdminPanel() {
                     {/* Content */}
                     <Box maxWidth="lg" sx={{ marginTop: "20px", marginX: "auto", display: "flex", flexDirection: "column", justifyContent: "center", gap: "20px" }}>
                         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                            <Typography
-                                variant="h5" sx={{ fontWeight: "bold", textDecoration: "underline" }}
-                            >
-                                Ürünler
-                            </Typography>
-                            <Button onClick={handleOpen}
-                                sx={{
-                                    gap: "10px",
-                                    backgroundColor: "#1D7091", color: "white", padding: "15px 12px", fontSize: "1rem",
-                                    '&:hover': {
-                                        backgroundColor: "#1D7091",
-                                        color: "white",
-                                        opacity: "0.9"
-                                    }
-                                }}
-                            >
-                                <AddBoxRoundedIcon />
-                                <Typography variant="subtitle1">Ürün Ekle</Typography>
-                            </Button>
                             <Modal
                                 open={open}
                                 onClose={handleClose}
@@ -143,54 +145,62 @@ function AdminPanel() {
                                 <Box
                                     sx={{
                                         position: 'absolute',
-                                        top: '40%',
+                                        top: '50%',
                                         left: '50%',
                                         transform: 'translate(-50%, -50%)',
-                                        width: "700px",
-                                        height: "700px",
+                                        width: "1000px",
                                         bgcolor: 'background.paper',
                                         border: '1px solid #ddd',
                                         borderRadius: "5px",
-                                        boxShadow: "50px",
-                                        p: 4,
+                                        boxShadow: "150px",
+                                        padding: "15px 70px",
                                         display: "flex",
-                                        gap: "20px",
+                                        gap: "15px",
                                         flexDirection: "column",
                                         alignItems: "center",
-                                        justifyContent: "center"
+                                        justifyContent: "center",
                                     }}>
-                                    <Typography id="modal-modal-title" variant="h6" component="h2"
-                                        sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
-                                        Ürün Resmi
+                                    <Typography id="modal-modal-title" variant="h5"
+                                        sx={{ fontWeight: "bolder", marginBottom: "15px" }}>
+                                        Yeni Ürün
                                     </Typography>
-                                    <label style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "6px 12px", cursor: "pointer" }}>
-                                        <UploadFileIcon style={{ width: "50px", height: "50px" }} />
-                                        <input
-                                            type="file"
-                                            style={{ display: "none" }}
-                                            onChange={(event) => {
-                                                setNewProductImage(event.target.files[0]);
-                                            }}
-                                        />
-                                        <Typography>{newProductImage ? "Dosya secildi!" : "Bir dosya secin"}</Typography>
-                                    </label>
-                                    <Button sx={{
-                                        backgroundColor: "#1D7091", color: "white", padding: "8px 6px", fontSize: "0.8rem",
-                                        '&:hover': {
-                                            backgroundColor: "#1D7091",
-                                            color: "white",
-                                            opacity: "0.9"
-                                        }
-                                    }} onClick={uploadImage} size="small">RESMİ YÜKLE</Button>
-
-                                    <Typography id="modal-modal-title" variant="h6" component="h2"
-                                        sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
-                                        Ürün Adı
-                                    </Typography>
-                                    <TextField required autoComplete="off" fullWidth id="standard-basic" variant="outlined"
-                                        onChange={(event) => setNewProductName(event.target.value)}
-                                    />
-                                    <Typography id="modal-modal-title" variant="h6" component="h2"
+                                    <Box sx={{ display: "flex", flexDirection: "row", gap: "50px", justifyContent: "space-between" }}>
+                                        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                                            <Typography id="modal-modal-title" variant="subtitle"
+                                                sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
+                                                Ürün Resmi
+                                            </Typography>
+                                            <label style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "6px 12px", cursor: "pointer" }}>
+                                                <UploadFileIcon style={{ width: "50px", height: "50px" }} />
+                                                <input
+                                                    type="file"
+                                                    style={{ display: "none" }}
+                                                    onChange={(event) => {
+                                                        setNewProductImage(event.target.files[0]);
+                                                    }}
+                                                />
+                                                <Typography>{newProductImage ? "Dosya secildi!" : "Bir dosya secin"}</Typography>
+                                            </label>
+                                            <Button sx={{
+                                                backgroundColor: "#1D7091", color: "white", padding: "8px 6px", fontSize: "0.7rem",
+                                                '&:hover': {
+                                                    backgroundColor: "#1D7091",
+                                                    color: "white",
+                                                    opacity: "0.9"
+                                                }
+                                            }} onClick={uploadImage} size="small">RESMİ YÜKLE</Button>
+                                        </Box>
+                                        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+                                            <Typography id="modal-modal-title" variant="subtitle"
+                                                sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
+                                                Ürün Adı
+                                            </Typography>
+                                            <TextField required autoComplete="off" fullWidth id="standard-basic" variant="outlined"
+                                                onChange={(event) => setNewProductName(event.target.value)}
+                                            />
+                                        </Box>
+                                    </Box>
+                                    <Typography id="modal-modal-title" variant="subtitle"
                                         sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
                                         Ürün Acıklaması
                                     </Typography>
@@ -200,9 +210,39 @@ function AdminPanel() {
                                         id="standard-multiline-static"
                                         multiline
                                         rows={4}
-                                        variant="outlined"
+                                        variant="standard"
                                         onChange={(event) => setNewProductDescription(event.target.value)}
                                         fullWidth
+                                    />
+                                    <Box sx={{ display: "flex", flexDirection: "row" }}>
+                                        <Typography id="modal-modal-title" variant="subtitle"
+                                            sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
+                                            Stok Adedi
+                                        </Typography>
+                                        <TextField required autoComplete="off" fullWidth id="standard-basic" variant="outlined"
+                                            onChange={(event) => setNewProductStock(event.target.value)}
+                                        />
+                                        <Typography id="modal-modal-title" variant="subtitle"
+                                            sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
+                                            Ürün OEM Kodu
+                                        </Typography>
+                                        <TextField required autoComplete="off" fullWidth id="standard-basic" variant="outlined"
+                                            onChange={(event) => setNewProductOEM(event.target.value)}
+                                        />
+                                        <Typography id="modal-modal-title" variant="subtitle"
+                                            sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
+                                            Fiyatı
+                                        </Typography>
+                                        <TextField required autoComplete="off" fullWidth id="standard-basic" variant="outlined"
+                                            onChange={(event) => setNewProductPrice(event.target.value)}
+                                        />
+                                    </Box>
+                                    <Typography id="modal-modal-title" variant="subtitle"
+                                        sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
+                                        Ürün Kategorisi
+                                    </Typography>
+                                    <TextField required autoComplete="off" fullWidth id="standard-basic" variant="outlined"
+                                        onChange={(event) => setNewProductCategory(event.target.value)}
                                     />
                                     <Button onClick={addProduct} sx={{
                                         backgroundColor: "#1D7091", color: "white", padding: "15px 12px", fontSize: "1.1rem",
@@ -217,18 +257,47 @@ function AdminPanel() {
                                 </Box>
                             </Modal>
                         </Box>
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 1050 }} aria-label="simple table">
+                        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                            <SearchAppBar />
+                            <Button onClick={handleOpen}
+                                sx={{
+                                    gap: "10px",
+                                    backgroundColor: "#1D7091", color: "white", padding: "15px 12px", fontSize: "1rem",
+                                    '&:hover': {
+                                        backgroundColor: "#1D7091",
+                                        color: "white",
+                                        opacity: "0.9"
+                                    }
+                                }}
+                            >
+                                <AddBoxRoundedIcon />
+                                <Typography variant="subtitle1">Ürün Ekle</Typography>
+                            </Button>
+                        </Box>
+                        <TableContainer component={Paper} sx={{ maxHeight: 620, boxShadow: "rgb(38, 57, 77) 0px 20px 30px -10px", border: "2px solid #ddd" }}>
+                            <Typography variant="h6" sx={{ padding: "15px 20px", fontWeight: "bolder", background: "#f7f7f7" }}>Ürünler</Typography>
+                            <Table stickyHeader aria-label="simple table">
                                 <TableHead>
-                                    <TableRow>
-                                        <TableCell sx={{ fontSize: "1rem", fontWeight: "bolder" }}>Ürün Resmi</TableCell>
-                                        <TableCell sx={{ fontSize: "1rem", fontWeight: "bolder" }} align="left">Ürün Adı</TableCell>
-                                        <TableCell sx={{ fontSize: "1rem", fontWeight: "bolder" }} align="left">Ürün Açıklaması</TableCell>
-                                        <TableCell sx={{ fontSize: "1rem", fontWeight: "bolder" }} align="left"></TableCell>
+                                    <TableRow sx={{ textDecoration: "underline" }}>
+                                        <TableCell sx={{ fontWeight: "bolder" }}>ÜRÜN RESMi</TableCell>
+                                        <TableCell sx={{ fontWeight: "bolder" }} align="left">ÜRÜN ADI</TableCell>
+                                        <TableCell sx={{ fontWeight: "bolder" }} align="left">ÜRÜN AÇIKLAMASI</TableCell>
+                                        <TableCell sx={{ fontWeight: "bolder" }} align="left">STOK ADEDI</TableCell>
+                                        <TableCell sx={{ fontWeight: "bolder" }} align="left">OEM KODU</TableCell>
+                                        <TableCell sx={{ fontWeight: "bolder" }} align="left">FİYAT</TableCell>
+                                        <TableCell sx={{ fontWeight: "bolder" }} align="left">KATEGORİ</TableCell>
+                                        <TableCell sx={{ fontWeight: "bolder" }} align="left"></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {products.length !== 0 ? products.map((product, index) => (
+                                    {products.length !== 0 ? products.filter((product) => {
+                                        if (product.name.toLowerCase().includes(input)
+                                            || product.description.toLowerCase().includes(input)
+                                            || product.oem.toLowerCase().includes(input)
+                                        ) {
+                                            return product;
+                                        }
+                                    }).map((product, index) => (
                                         <TableRow
                                             key={index}
                                             sx={{
@@ -240,25 +309,31 @@ function AdminPanel() {
                                             }}
                                         >
                                             <TableCell component="th" scope="row">
-                                                <img style={{ width: "200px", height: "200px" }} src={product.image} alt={product.image}></img>
+                                                <img style={{ width: "150px", height: "150px" }} src={product.image} alt={product.image}></img>
                                             </TableCell>
                                             <TableCell align="left">{product.name}</TableCell>
                                             <TableCell align="left">{product.description}</TableCell>
+                                            <TableCell align="left">{product.stock}</TableCell>
+                                            <TableCell align="left">{product.oem}</TableCell>
+                                            <TableCell align="left">{product.price}</TableCell>
+                                            <TableCell align="left">{product.category}</TableCell>
                                             <TableCell align="left">
                                                 <Button onClick={() => {
                                                     deleteProduct(product);
                                                 }}
                                                     sx={{
-                                                        gap: "10px",
-                                                        backgroundColor: "#ED3137", color: "white", padding: "15px 10px", fontSize: "0.8rem",
+                                                        gap: "5px",
                                                         '&:hover': {
-                                                            backgroundColor: "#ED3137",
-                                                            color: "white",
+                                                            backgroundColor: "white",
+                                                            color: "#ED3137",
                                                             opacity: "0.9"
                                                         }
                                                     }}>
-                                                    ÜRÜNÜ SİL
-                                                    <DeleteIcon />
+                                                    <DeleteIcon
+                                                        sx={{
+                                                            fontSize: "2rem",
+                                                            color: "#ED3137"
+                                                        }} />
                                                 </Button>
                                             </TableCell>
                                         </TableRow>
