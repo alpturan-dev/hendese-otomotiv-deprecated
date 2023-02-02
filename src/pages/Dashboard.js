@@ -53,14 +53,13 @@ function Dashboard() {
                                     opacity: "0.9"
                                 }} />
                                 <Typography sx={{ color: "slategray", fontSize: "1.5rem", fontWeight: "bolder", position: "absolute", top: "90%", left: "25%" }}>Hendese Otomotiv Cıkma Yedek Parca</Typography>
-
                             </div>
                         </AutoplaySlider>
                     </Box>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         {products.length !== 0 ? products.map((product, key) => (
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <Card sx={{ minWidth: 240 }} key={key}>
+                            <Grid key={key} item xs={12} sm={6} md={4} lg={3}>
+                                <Card sx={{ minWidth: 240 }} >
                                     <img
                                         style={{ width: "100%", height: "240px" }}
                                         src={product.image}

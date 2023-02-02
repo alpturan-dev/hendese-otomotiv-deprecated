@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded';
 import MenuIcon from '@mui/icons-material/Menu';
+import DropdownMenu from './DropdownMenu'
 import logo from '../assets/logo.jpeg'
 import suzukilogo from '../assets/suzuki-logo.jpeg'
 import { CssBaseline, Container, Box, Typography, Link, Button } from '@mui/material';
@@ -9,7 +10,6 @@ function Navbar() {
     const [menu, setMenu] = useState(false);
     const handleMenu = () => {
         setMenu(!menu);
-        console.log("menu handled", menu);
     }
     return (
         <React.Fragment>
@@ -53,21 +53,10 @@ function Navbar() {
                     <Box sx={{ display: "flex", flexDirection: "column" }}>
                         <Button onClick={handleMenu} sx={{ marginY: "10px", display: { xs: "flex", sm: "flex", md: "none", lg: "none" }, alignItems: "center", color: "primary.main" }}><MenuIcon sx={{ width: "40px", height: "40px" }} /></Button>
                         <Box
-                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.1rem" }, fontWeight: "bold", display: { xs: menu ? "flex" : "none", sm: menu ? "flex" : "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "15px" }}
+                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.1rem" }, fontWeight: "bold", display: { xs: menu ? "flex" : "none", sm: menu ? "flex" : "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "20px" }}
                         >
                             <li>
-                                <Link href="#" sx={{
-                                    textDecoration: "none",
-                                    color: "black",
-                                    transition: "0.1s",
-                                    '&:hover': {
-                                        color: "primary.main",
-                                        borderBottom: "2px solid #ed3137",
-                                    }
-                                }}
-                                >
-                                    Yedek Parçalar
-                                </Link>
+                                <DropdownMenu />
                             </li>
                             <li>
                                 <Link href="#" sx={{
@@ -101,36 +90,19 @@ function Navbar() {
                                     alignItems: "center",
                                     justifyContent: "center",
                                     fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
-                                    textDecoration: "underline",
                                     color: "primary.main",
                                     gap: "10px",
                                     transition: "0.5s",
-                                    borderRadius: "5px",
                                     padding: "15px 10px",
+                                    borderRadius: "5px 5px 0 0",
+                                    borderBottom: "2px solid #ed3137",
                                     '&:hover': {
                                         backgroundColor: "primary.main",
                                         color: "secondary.main"
                                     }
                                 }}
                             >
-                                <Box sx={{
-                                    transition: "transform 0.2s linear",
-                                    '&:hover': {
-                                        transform: "rotate(45deg)"
-                                    }
-                                }}>
-                                    <Box sx={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        transition: "transform 0.3s linear",
-                                        '&:hover': {
-                                            transform: "rotate(-45deg)"
-                                        }
-                                    }}>
-                                        <PhoneInTalkRoundedIcon />
-                                    </Box>
-                                </Box>
+                                <PhoneInTalkRoundedIcon />
                                 0553 265 47 34
                             </Box>
                         </Box>
@@ -146,7 +118,6 @@ function Navbar() {
                     </Box>
                 </Container>
             </Box>
-
         </React.Fragment>
     )
 }
