@@ -1,4 +1,6 @@
 import { UserProvider } from './context/UserContext';
+import { ModalProvider } from './context/ModalContext';
+import { SparePartProvider } from './context/SparePartContext';
 
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
@@ -25,9 +27,13 @@ const router = createBrowserRouter([
 ]);
 function App() {
   return (
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+    <SparePartProvider>
+      <ModalProvider>
+        <UserProvider>
+          <RouterProvider router={router} />
+        </UserProvider>
+      </ModalProvider>
+    </SparePartProvider>
   );
 }
 

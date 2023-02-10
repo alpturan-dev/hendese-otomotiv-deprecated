@@ -1,7 +1,7 @@
 import { Container, Box, Typography, Grid, CardContent, Card } from '@mui/material'
 import React, { useContext, useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import UserContext from '../context/UserContext'
+import UserContext from '../context/UserContext';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../firebase'
 import yedekparca1 from '../assets/yedekparca1.jpeg'
@@ -38,7 +38,7 @@ function Dashboard() {
                             interval={3000}
                         >
                             <div>
-                                <img src={yedekparca1} style={{
+                                <img alt={yedekparca1} src={yedekparca1} style={{
                                     maxWidth: "100%",
                                     maxHeight: "100%",
                                     objectFit: "contain",
@@ -46,7 +46,7 @@ function Dashboard() {
                                 }} />
                             </div>
                             <div>
-                                <img src={yedekparca2} style={{
+                                <img alt={yedekparca2} src={yedekparca2} style={{
                                     maxWidth: "100%",
                                     maxHeight: "100%",
                                     objectFit: "contain",
@@ -64,6 +64,7 @@ function Dashboard() {
                                         style={{ width: "100%", height: "240px" }}
                                         src={product.image}
                                         title={product.name}
+                                        alt={product.name}
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">

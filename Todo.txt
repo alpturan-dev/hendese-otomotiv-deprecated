@@ -4,10 +4,13 @@ Admin panelin cikisinda bug var o duzeltilecek.. DONE
 
 
 //Admin paneli
-Urun stok adedi, urun kodu (OEM kodu),fiyat kısmı,kategori kısmı eklenicek.
+Urun stok adedi, urun kodu (OEM kodu),fiyat kısmı,kategori kısmı eklenicek. DONE
+Urun ekleme modali duzenlenecek. DONE
+Marka, model kismi eklenecek.
 
 //Dashboard
-Kategori icin dropdown menu yapılabilir.
+Kategori icin dropdown menu yapılabilir. (Dropdown menu yapildi, icerigi bos.)
 Dashboard -> slider,tum urunler,kategorilerine gore bolumler (tum urunler icin 3 satir falan gosterip butun urunleri goster butonu olabilir, ayni sekilde kategorilerine gore bolumler icin de)
 (daha sonra categorypage'e yonlendiririz)
 ProductPage yapilacak(ornek olarak muammer abi atti)
+
