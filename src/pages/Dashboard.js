@@ -1,7 +1,8 @@
 import { Container, Box, Typography, Grid, CardContent, Card } from '@mui/material'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import UserContext from '../context/UserContext';
+import { Navigate } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../firebase'
 import yedekparca1 from '../assets/yedekparca1.jpeg'
@@ -9,10 +10,15 @@ import yedekparca2 from '../assets/yedekparca2.jpeg'
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
+
 function Dashboard() {
     const { products, setProducts } = useContext(UserContext);
     const productsRef = collection(db, "products");
+
+    const [redirectProductPage, setRedirectProductPage] = useState(false);
+
     useEffect(() => {
+        setRedirectProductPage(false);
         const getProducts = async () => {
             const data = await getDocs(productsRef);
             const displaydata = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -21,6 +27,10 @@ function Dashboard() {
         }
         getProducts();
     }, [])
+
+    const handleProductPage = () => {
+        setRedirectProductPage(true);
+    }
 
     const AutoplaySlider = withAutoplay(AwesomeSlider);
     return (
@@ -58,7 +68,7 @@ function Dashboard() {
                     </Box>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         {products.length !== 0 ? products.map((product, key) => (
-                            <Grid key={key} item xs={12} sm={6} md={4} lg={3}>
+                            <Grid onClick={() => handleProductPage(product)} key={key} item xs={12} sm={6} md={4} lg={3}>
                                 <Card sx={{ minWidth: 240 }} >
                                     <img
                                         style={{ width: "100%", height: "240px" }}
@@ -75,12 +85,12 @@ function Dashboard() {
                                         </Typography>
                                     </CardContent>
                                 </Card>
+                                {redirectProductPage && <Navigate to="/product" state={product} replace={true} />}
                             </Grid>
                         )) :
                             "Henuz hicbisi yok"}
                     </Grid>
                 </Container>
-
             </Box>
         </>
     )

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import { Modal, Box, Typography, Button, TextField } from '@mui/material';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
@@ -14,9 +15,7 @@ import CategorySelect from './CategorySelect'
 import ModelSelect from './ModelSelect'
 import { useContext } from 'react';
 import ModalContext from '../context/ModalContext';
-import SparePartContext from '../context/SparePartContext';
 function AddProductModal({ addProduct }) {
-    const { categories } = useContext(SparePartContext);
     const {
         open,
         handleClose,
@@ -28,7 +27,7 @@ function AddProductModal({ addProduct }) {
         setNewProductOEM,
         setNewProductPrice,
     } = useContext(ModalContext);
-
+    const [loadImage, setLoadImage] = useState(false);
     const uploadImage = async () => {
         toast.loading('Resim yükleniyor...');
         if (newProductImage == null) return;
@@ -36,6 +35,7 @@ function AddProductModal({ addProduct }) {
         uploadBytes(imageRef, newProductImage).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setNewProductImage(url);
+                setLoadImage(true)
                 toast.dismiss();
                 toast.success("Resim yüklendi!");
             });
@@ -102,10 +102,11 @@ function AddProductModal({ addProduct }) {
                                 boxShadow: "5px 5px 5px gray",
                                 padding: "2rem 4rem"
                             }}>
-                                {newProductImage ?
-                                    <img alt={newProductImage} src={newProductImage} style={{ width: "80px", height: "80px" }} />
+                                {loadImage ?
+                                    <img alt={newProductImage} src={newProductImage}
+                                        style={{ width: "100px", height: "100px" }} />
                                     :
-                                    <UploadFileIcon style={{ width: "80px", height: "80px" }} />
+                                    <UploadFileIcon style={{ width: "100px", height: "100px" }} />
                                 }
                                 <input
                                     type="file"
@@ -140,7 +141,7 @@ function AddProductModal({ addProduct }) {
                         <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                             <Typography id="modal-modal-title" variant="h6"
                                 sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
-                                Ürün Acıklaması
+                                Ürün Açıklaması
                             </Typography>
                             <TextField
                                 color="secondary"

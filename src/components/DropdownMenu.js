@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Button from '@mui/material/Button';
+import { Box } from '@mui/material'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
@@ -22,7 +23,7 @@ export default function DropdownMenu() {
 
     return (
         <div>
-            <Button
+            <Box
                 sx={{
                     display: "flex",
                     alignItems: "center",
@@ -44,7 +45,7 @@ export default function DropdownMenu() {
             >
                 Yedek Parçalar
                 <ArrowDropDownIcon />
-            </Button>
+            </Box>
             <Menu
                 id="fade-menu"
                 MenuListProps={{

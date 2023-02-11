@@ -56,10 +56,7 @@ function Navbar() {
                             sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.1rem" }, fontWeight: "bold", display: { xs: menu ? "flex" : "none", sm: menu ? "flex" : "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "20px" }}
                         >
                             <li>
-                                <DropdownMenu />
-                            </li>
-                            <li>
-                                <Link href="#" sx={{
+                                <Link href="/" sx={{
                                     textDecoration: "none",
                                     color: "black",
                                     transition: "0.1s",
@@ -68,8 +65,11 @@ function Navbar() {
                                         borderBottom: "2px solid #ed3137",
                                     }
                                 }}>
-                                    Hakkımızda
+                                    Ana Sayfa
                                 </Link>
+                            </li>
+                            <li>
+                                <DropdownMenu />
                             </li>
                             <li>
                                 <Link href="#" sx={{
