@@ -3,7 +3,6 @@ import { CssBaseline, Container, Box, Typography, Button } from '@mui/material';
 import SearchAppBar from '../components/SearchBar';
 import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { logout, db, storage } from '../firebase'
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore/lite';
 import {
@@ -145,7 +144,6 @@ function AdminPanel() {
                             <AddProductModal addProduct={addProduct} />
                         </Box>
                         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                            <FilterAltIcon />
                             <SearchAppBar />
                             <FilterCategorySelect />
                             <FilterModelSelect />

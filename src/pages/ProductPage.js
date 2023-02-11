@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 import { Box, Container, Typography } from '@mui/material'
 import SellIcon from '@mui/icons-material/Sell';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -15,17 +17,22 @@ function ProductPage() {
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container sx={{ paddingTop: "40px", height: "100%" }}>
                     <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: { xs: "center", sm: "center", md: "space-between", lg: "space-between" }, gap: { xs: "40px", sm: "40px", md: "100px", lg: "100px" } }}>
-                        <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", }}>
-                            <Box sx={{
-                                width: { xs: "360px", sm: "360px", md: "415px", lg: "415px" },
-                                height: { xs: "360px", sm: "360px", md: "415px", lg: "415px" }
-                            }}>
-                                <img src={product.image}
-                                    style={{ width: "100%", height: "100%", borderRadius: "5px" }}
-                                />
-                            </Box>
+                        <Box
+                            sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}
+                        >
+                            <Zoom>
+                                <Box sx={{
+                                    width: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
+                                    height: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
+                                }}>
+                                    <img src={product.image}
+                                        style={{ width: "100%", height: "100%", borderRadius: "5px" }}
+                                    />
+                                </Box>
+                            </Zoom>
+
                         </Box>
-                        <Box sx={{ display: "flex", flexDirection: "column", width: { xs: "100%", sm: "80%", md: "80%", lg: "80%" }, height: "415px", gap: "25px" }}>
+                        <Box sx={{ display: "flex", flexDirection: "column", width: { xs: "100%", sm: "80%", md: "80%", lg: "80%" }, height: "415px", gap: "20px" }}>
                             <Typography sx={{ fontWeight: "bold", color: "#3D4095" }} variant="h6">SUZUKI</Typography>
                             <Typography sx={{ fontWeight: "bold" }} variant="h3">{product.name}
                                 <Typography sx={{ fontWeight: "100" }} variant="body1">{product.model} | {product.category}</Typography>
