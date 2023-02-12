@@ -7,7 +7,7 @@ function Footer() {
     return (
         <>
             <Box sx={{ bgcolor: "secondary.main", borderTop: "2px solid #ddd" }}>
-                <Container sx={{ paddingY: "50px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center" }}>
+                <Container sx={{ paddingY: "30px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center" }}>
                     <Box sx={{ width: { xs: "100%", sm: "100%", md: "40%", lg: "40%" } }}>
                         <Box sx={{ display: "flex", alignItems: "center", justifyContent: { md: "center" }, gap: "15px" }}>
                             <img
