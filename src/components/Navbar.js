@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Shake } from 'reshake';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -84,27 +85,32 @@ function Navbar() {
                                     İletişim
                                 </Link>
                             </li>
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
-                                    color: "primary.main",
-                                    gap: "10px",
-                                    transition: "0.5s",
-                                    padding: "15px 10px",
-                                    borderRadius: "5px 5px 0 0",
-                                    borderBottom: "2px solid #ed3137",
-                                    '&:hover': {
-                                        backgroundColor: "primary.main",
-                                        color: "secondary.main"
-                                    }
-                                }}
-                            >
-                                <PhoneInTalkRoundedIcon />
-                                0553 265 47 34
-                            </Box>
+                            <Shake h={3} v={0} r={3}>
+                                <Box
+                                    href="tel:05532654734"
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
+                                        color: "primary.main",
+                                        gap: "10px",
+                                        transition: "0.5s",
+                                        padding: "15px 10px",
+                                        borderRadius: "5px 5px 0 0",
+                                        borderBottom: "2px solid #ed3137",
+                                        '&:hover': {
+                                            backgroundColor: "primary.main",
+                                            color: "secondary.main",
+                                            cursor: "pointer"
+                                        }
+                                    }}
+                                >
+                                    <PhoneInTalkRoundedIcon />
+                                    0553 265 47 34
+                                </Box>
+
+                            </Shake>
                         </Box>
                     </Box>
                     <Box sx={{ display: { xs: "none", sm: "none", md: "none", lg: "flex" }, alignItems: "center" }}>

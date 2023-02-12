@@ -2,7 +2,9 @@ import { Container, Box, Typography, Grid, CardContent, Card } from '@mui/materi
 import React, { useContext, useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard';
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer';
 import UserContext from '../context/UserContext';
+import SparePartContext from '../context/SparePartContext';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../firebase'
 import yedekparca1 from '../assets/yedekparca1.jpeg'
@@ -13,6 +15,7 @@ import 'react-awesome-slider/dist/styles.css';
 
 function Dashboard() {
     const { products, setProducts } = useContext(UserContext);
+    const { categories } = useContext(SparePartContext)
     const productsRef = collection(db, "products");
 
     useEffect(() => {
@@ -31,7 +34,7 @@ function Dashboard() {
         <>
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
-                <Container sx={{ paddingTop: "40px" }}>
+                <Container sx={{ paddingY: "40px" }}>
                     <Box sx={{ paddingBottom: "70px", width: "80%", margin: "auto" }}>
                         <Typography sx={{ fontSize: "2rem", fontWeight: "bolder", display: "flex", alignItems: "center", justifyContent: "center" }}>
                             Hendese Otomotiv Çıkma Yedek Parça
@@ -60,13 +63,33 @@ function Dashboard() {
                             </div>
                         </AutoplaySlider>
                     </Box>
+                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "5px", marginBottom: "20px" }}>Tüm Ürünler</Typography>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         {products.map((product, key) => (
                             <ProductCard key={key} product={product} />
                         ))}
                     </Grid>
+                    {categories.map((category) => {
+                        const filteredProducts = products.filter((product) => (product.category === category));
+                        console.log(filteredProducts.length)
+                        return (
+                            filteredProducts.length > 0 && (
+                                <>
+                                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "8px", marginY: "20px" }}>
+                                        {category}
+                                    </Typography>
+                                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ marginX: "auto" }}>
+                                        {filteredProducts.map((product, key) => (
+                                            <ProductCard key={key} product={product} />
+                                        ))}
+                                    </Grid>
+                                </>
+                            )
+                        )
+                    })}
                 </Container>
             </Box>
+            <Footer />
         </>
     )
 }

@@ -30,7 +30,6 @@ export default function DropdownMenu() {
                     textDecoration: "none",
                     color: "black",
                     fontWeight: "bold",
-                    fontSize: "1.1rem",
                     transition: "0.1s",
                     '&:hover': {
                         color: "primary.main",
