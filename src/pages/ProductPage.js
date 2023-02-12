@@ -17,7 +17,7 @@ function ProductPage() {
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container sx={{ paddingY: "50px", height: "100%" }}>
-                    <Box sx={{ paddingBottom: "150px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: { xs: "center", sm: "center", md: "space-between", lg: "space-between" }, gap: { xs: "40px", sm: "40px", md: "100px", lg: "100px" } }}>
+                    <Box sx={{ paddingBottom: "100px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: { xs: "center", sm: "center", md: "space-between", lg: "space-between" }, gap: { xs: "40px", sm: "40px", md: "100px", lg: "100px" } }}>
                         <Box
                             sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}
                         >
@@ -34,16 +34,13 @@ function ProductPage() {
 
                         </Box>
                         <Box sx={{ display: "flex", flexDirection: "column", width: { xs: "100%", sm: "80%", md: "80%", lg: "80%" }, height: "415px", gap: "20px" }}>
-                            <Typography sx={{ fontWeight: "bold", color: "#3D4095" }} variant="h6">SUZUKI</Typography>
-                            <Typography sx={{ fontWeight: "bold" }} variant="h3">{product.name}
-                                <Typography sx={{ fontWeight: "100" }} variant="body1">{product.model} | {product.category}</Typography>
+                            <Typography variant="h4">Suzuki {product.model} {product.name}
+                                <Typography sx={{ fontWeight: "100", opacity: "0.7" }} variant="body1">{product.category} | {product.oem}</Typography>
                             </Typography>
-                            <Typography sx={{ fontWeight: "700" }}>OEM: {product.oem}</Typography>
-
-                            <Typography sx={{ fontWeight: "100", lineHeight: '1.5' }} paragraph>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil itaque temporibus, et obcaecati dolor quaerat facere sequi ipsa quos delectus odio fugiat ex? Tenetur ad cumque explicabo dicta, error culpa.
+                            <Typography sx={{ fontWeight: "400", lineHeight: '1.5' }} paragraph>
+                                {product.description}
                             </Typography>
-                            <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "column", lg: "row" }, justifyContent: "space-between", alignItems: "center", gap: { xs: "30px", sm: "30px", md: "10px", lg: "10px" } }}>
+                            <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, justifyContent: "space-between", alignItems: "center", gap: { xs: "30px", sm: "30px", md: "10px", lg: "10px" } }}>
                                 <Box sx={{ display: "flex", flexDirection: "column", gap: { xs: "20px", sm: "20px", md: "40px", lg: "40px" } }}>
                                     <Box sx={{ display: "flex", justifyContent: "space-between", borderRadius: "3px" }}>
                                         <Typography sx={{ display: "flex", alignItems: "center", fontWeight: "bold", gap: "10px" }} variant="h4">
@@ -55,62 +52,63 @@ function ProductPage() {
                                         <InventoryIcon sx={{ color: "primary.main" }} />
                                         Stok adedi: {product.stock}
                                     </Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", gap: "20px" }}>
-                                    <Box
-                                        sx={{
-                                            width: "100%",
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
-                                            color: "secondary.main",
-                                            backgroundColor: "primary.main",
-                                            gap: "10px",
-                                            transition: "0.5s",
-                                            padding: "15px 25px",
-                                            borderRadius: "5px",
-                                            boxShadow: "#ed3137 0px 5px 4px",
-                                            '&:hover': {
-                                                opacity: "0.9"
-                                            }
-                                        }}
-                                    >
-                                        <a href="tel:05532654734" style={{ color: "#f7f7f7", textDecoration: "none" }}>
-                                            <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                                <ShoppingBasketIcon />Hemen Ara!
-                                            </Typography>
-                                            0553 265 47 34
-                                        </a>
+                                    <Box sx={{ display: "flex", gap: "20px" }}>
+                                        <Box
+                                            sx={{
+                                                width: "100%",
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
+                                                color: "secondary.main",
+                                                backgroundColor: "primary.main",
+                                                gap: "10px",
+                                                transition: "0.5s",
+                                                padding: "15px 25px",
+                                                borderRadius: "5px",
+                                                boxShadow: "#ed3137 0px 5px 4px",
+                                                '&:hover': {
+                                                    opacity: "0.9"
+                                                }
+                                            }}
+                                        >
+                                            <a href="tel:05303604105" style={{ color: "#f7f7f7", textDecoration: "none" }}>
+                                                <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                                    <ShoppingBasketIcon />Hemen Ara!
+                                                </Typography>
+                                                +90 530 360 41 05
+                                            </a>
+                                        </Box>
+                                        <Box
+                                            sx={{
+                                                cursor: "pointer",
+                                                width: "40%",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
+                                                color: "secondary.main",
+                                                backgroundColor: "#118C7E",
+                                                gap: "10px",
+                                                transition: "0.5s",
+                                                padding: "15px 25px",
+                                                borderRadius: "5px 5px 0 0",
+                                                boxShadow: "#118C7E 5px 5px 5px ",
+                                                '&:hover': {
+                                                    opacity: "0.9"
+                                                }
+                                            }}
+                                        >
+                                            <a href="https://wa.me/05303604105" style={{ color: "#f7f7f7", textDecoration: "none" }}>
+                                                <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                                    <WhatsAppIcon /> WhatsApp
+                                                </Typography>
+                                            </a>
+                                        </Box>
                                     </Box>
-                                    <Box
-                                        sx={{
-                                            cursor: "pointer",
-                                            width: "40%",
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
-                                            color: "secondary.main",
-                                            backgroundColor: "#118C7E",
-                                            gap: "10px",
-                                            transition: "0.5s",
-                                            padding: "15px 25px",
-                                            borderRadius: "5px 5px 0 0",
-                                            boxShadow: "#118C7E 5px 5px 5px ",
-                                            '&:hover': {
-                                                opacity: "0.9"
-                                            }
-                                        }}
-                                    >
-                                        <a href="https://wa.me/05532654734" style={{ color: "#f7f7f7", textDecoration: "none" }}>
-                                            <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                                <WhatsAppIcon /> WhatsApp
-                                            </Typography>
-                                        </a>
-                                    </Box>
                                 </Box>
+
                             </Box>
                         </Box>
                     </Box>

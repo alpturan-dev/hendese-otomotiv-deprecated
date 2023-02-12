@@ -25,15 +25,16 @@ export default function DropdownMenu() {
         <div>
             <Box
                 sx={{
+                    paddingX: "2px",
                     display: "flex",
                     alignItems: "center",
                     textDecoration: "none",
                     color: "black",
-                    fontWeight: "bold",
-                    transition: "0.1s",
+                    borderBottom: "0 solid #ed3137",
+                    transition: "border .2s ease-in-out",
                     '&:hover': {
                         color: "primary.main",
-                        borderBottom: "2px solid #ed3137",
+                        borderWidth: "4px"
                     }
                 }}
                 id="fade-button"
@@ -42,7 +43,7 @@ export default function DropdownMenu() {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                Yedek Parçalar
+                Yedek Parça
                 <ArrowDropDownIcon />
             </Box>
             <Menu

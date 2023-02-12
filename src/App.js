@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import AdminPanel from './pages/AdminPanel';
 import ProductPage from './pages/ProductPage';
+import Contact from './pages/Contact';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
   {
     path: "/product",
     element: <ProductPage />
+  }
+  ,
+  {
+    path: "/contact",
+    element: <Contact />
   }
 ]);
 function App() {

@@ -35,6 +35,7 @@ function Dashboard() {
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container sx={{ paddingY: "40px" }}>
+                    {/* //Slider */}
                     {/* <Box sx={{ paddingBottom: "70px", width: "80%", margin: "auto" }}>
                         <Typography sx={{ fontSize: "2rem", fontWeight: "bolder", display: "flex", alignItems: "center", justifyContent: "center" }}>
                             Hendese Otomotiv Çıkma Yedek Parça

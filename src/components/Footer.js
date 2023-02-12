@@ -39,9 +39,13 @@ function Footer() {
                                 </Typography>
                             </a>
                         </Box>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#F6E106" }}>
-                            <img style={{ width: "20px", height: "20px", color: "#F6E106" }} src="https://www.svgrepo.com/show/306691/sahibinden.svg" />
-                            <Typography sx={{ color: "#F6E106" }}>Sahibinden</Typography>
+                        <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                            <img style={{ width: "20px", height: "20px", color: "#F6E106" }} src="https://s0.shbdn.com/assets/images/sahibinden-logo:62af0108bd5214afd5c4e1595fc17339.png" />
+                            <a style={{ textDecoration: "none", color: "inherit" }} href="https://hendeseoto.sahibinden.com/">
+                                <Typography >
+                                    Sahibinden
+                                </Typography>
+                            </a>
                         </Box>
                     </Box>
                 </Container>
