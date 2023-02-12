@@ -17,7 +17,7 @@ function ProductPage() {
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container sx={{ paddingY: "50px", height: "100%" }}>
-                    <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: { xs: "center", sm: "center", md: "space-between", lg: "space-between" }, gap: { xs: "40px", sm: "40px", md: "100px", lg: "100px" } }}>
+                    <Box sx={{ paddingBottom: "150px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: { xs: "center", sm: "center", md: "space-between", lg: "space-between" }, gap: { xs: "40px", sm: "40px", md: "100px", lg: "100px" } }}>
                         <Box
                             sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}
                         >

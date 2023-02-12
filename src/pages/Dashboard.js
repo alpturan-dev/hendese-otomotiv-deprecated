@@ -35,7 +35,7 @@ function Dashboard() {
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container sx={{ paddingY: "40px" }}>
-                    <Box sx={{ paddingBottom: "70px", width: "80%", margin: "auto" }}>
+                    {/* <Box sx={{ paddingBottom: "70px", width: "80%", margin: "auto" }}>
                         <Typography sx={{ fontSize: "2rem", fontWeight: "bolder", display: "flex", alignItems: "center", justifyContent: "center" }}>
                             Hendese Otomotiv Çıkma Yedek Parça
                         </Typography>
@@ -62,7 +62,7 @@ function Dashboard() {
                                 <Typography sx={{ color: "slategray", fontSize: "1.5rem", fontWeight: "bolder", position: "absolute", top: "90%", left: "25%" }}>Hendese Otomotiv Cıkma Yedek Parca</Typography>
                             </div>
                         </AutoplaySlider>
-                    </Box>
+                    </Box> */}
                     <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "5px", marginBottom: "20px" }}>Tüm Ürünler</Typography>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         {products.map((product, key) => (
