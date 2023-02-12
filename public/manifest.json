@@ -2,17 +2,17 @@
   "short_name": "React App",
   "name": "Create React App Sample",
   "icons": [{
-      "src": "../src/assets/logo.jpeg",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "logo.jpeg",
+      "sizes": "80x64 40x32 36x24 30x16",
       "type": "image/x-icon"
     },
     {
-      "src": "../src/assets/logo.jpeg",
+      "src": "logo.jpeg",
       "type": "image/jpeg",
       "sizes": "192x192"
     },
     {
-      "src": "../src/assets/logo.jpeg",
+      "src": "logo.jpeg",
       "type": "image/jpeg",
       "sizes": "512x512"
     }
