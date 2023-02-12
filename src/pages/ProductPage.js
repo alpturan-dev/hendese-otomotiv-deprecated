@@ -8,6 +8,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useLocation } from 'react-router-dom';
+import Footer from '../components/Footer'
 function ProductPage() {
     const location = useLocation();
     const product = location.state;
@@ -111,13 +112,11 @@ function ProductPage() {
                                     </Box>
                                 </Box>
                             </Box>
-
-
                         </Box>
                     </Box>
                 </Container>
             </Box>
-
+            <Footer />
         </>
     )
 }
