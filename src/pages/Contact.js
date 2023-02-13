@@ -18,10 +18,10 @@ function Contact() {
                     <Box sx={{ width: { xs: "100%", sm: "100%", md: "50%" } }}>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12096.472197119363!2d30.3565584!3d40.7154177!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ccb1220ad01335%3A0xab9ab46c1065c7b3!2sHendese%20Otomotiv!5e0!3m2!1sen!2str!4v1676298897133!5m2!1sen!2str" style={{ height: "447px", width: "100%", border: "1px solid #ddd", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset" }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </Box>
-                    <Box sx={{ background: "#eee", width: { xs: "100%", sm: "100%", md: "50%" }, height: "447px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", paddingLeft: "20px", gap: "20px", border: "1px solid #ddd", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset" }}>
+                    <Box sx={{ background: "#eee", width: { xs: "100%", sm: "100%", md: "50%" }, height: "447px", display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", paddingLeft: "20px", gap: "20px", border: "1px solid #ddd", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset" }}>
                         <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
                             <LocalPhoneIcon sx={{ color: "primary.main" }} />
-                            Telefon: <a href="tel:05303604105" style={{ color: "#3F3F95" }}>0530 360 41 05</a>
+                            Telefon: <a href="tel:05303604105" style={{ color: "#3F3F95" }}>+90 530 360 41 05</a>
                         </Typography>
                         <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
                             <EmailIcon sx={{ color: "#1E60EF" }} />
