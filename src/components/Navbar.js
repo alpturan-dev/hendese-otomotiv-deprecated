@@ -42,7 +42,7 @@ function Navbar() {
                     maxWidth="lg"
                     sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "20px 0", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}
                 >
-                    <Box sx={{ margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "140px", sm: "140px", md: "200px" }, height: { xs: "80px", sm: "80px", md: "110px" } }}>
+                    <Box sx={{ margin: { xs: "0 auto", sm: "0 auto", md: "0", lg: "0" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "140px", sm: "140px", md: "200px" }, height: { xs: "80px", sm: "80px", md: "110px" } }}>
                         <img
                             src={`${logo}?w=150&h=150&fit=crop&auto=format`}
                             srcSet={`${logo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}

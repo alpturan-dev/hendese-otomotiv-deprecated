@@ -36,11 +36,13 @@ function Contact() {
                         </Typography>
                         <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px", }} variant="subtitle1">
                             <FacebookIcon sx={{ color: "#3B579D" }} />
-                            Facebook: <a href="https://www.facebook.com/hendeseoto/" style={{ color: "#3F3F95" }}>https://www.facebook.com/hendeseoto/</a>
+                            Facebook: <a href="https://www.facebook.com/hendeseoto/" style={{ color: "#3F3F95" }}>
+                                www.facebook.com/hendeseoto/
+                            </a>
                         </Typography>
                         <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
                             <img style={{ width: "20px", height: "20px", color: "#F6E106" }} src="https://s0.shbdn.com/assets/images/sahibinden-logo:62af0108bd5214afd5c4e1595fc17339.png" />
-                            Sahibinden: <a href="https://hendeseoto.sahibinden.com/" style={{ color: "#3F3F95" }}>https://hendeseoto.sahibinden.com/</a>
+                            Sahibinden: <a href="https://hendeseoto.sahibinden.com/" style={{ color: "#3F3F95" }}>hendeseoto.sahibinden.com/</a>
                         </Typography>
                     </Box>
                 </Container>
