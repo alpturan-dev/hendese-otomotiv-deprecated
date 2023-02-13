@@ -8,7 +8,7 @@ function Footer() {
         <>
             <Box sx={{ bgcolor: "secondary.main", borderTop: "2px solid #ddd" }}>
                 <Container sx={{ paddingY: "30px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "30px", justifyContent: "space-between" }}>
-                    <Box sx={{ width: "100%" }}>
+                    <Box>
                         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "15px" }}>
                             <img
                                 src={`${logo}?w=150&h=150&fit=crop&auto=format`}
@@ -22,32 +22,36 @@ function Footer() {
                             </Typography>
                         </Box>
                     </Box>
-                    <Box sx={{ width: { xs: "100%", sm: "100%", md: "60%", lg: "60%" }, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "15px" }}>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#3B579D" }}>
-                            <FacebookIcon />
-                            <a style={{ textDecoration: "none", color: "inherit" }} href="https://www.facebook.com/hendeseoto/">
-                                <Typography sx={{ '&:hover': { color: "#3B579D" } }}>
-                                    Facebook
-                                </Typography>
-                            </a>
-                        </Box>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#0B65C2" }}>
-                            <LinkedInIcon />
-                            <a style={{ textDecoration: "none", color: "inherit" }} href="https://www.linkedin.com/in/muammer-%C5%9Fen-b55bb9107/?originalSubdomain=tr">
-                                <Typography sx={{ '&:hover': { color: "#0B65C2" } }}>
-                                    LinkedIn
-                                </Typography>
-                            </a>
-                        </Box>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                            <img style={{ width: "20px", height: "20px", color: "#F6E106" }} src="https://s0.shbdn.com/assets/images/sahibinden-logo:62af0108bd5214afd5c4e1595fc17339.png" />
-                            <a style={{ textDecoration: "none", color: "inherit" }} href="https://hendeseoto.sahibinden.com/">
-                                <Typography >
-                                    Sahibinden
-                                </Typography>
-                            </a>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <Box sx={{ display: { xs: "block", sm: "block", md: "none", lg: "none" }, overflow: "hidden" }}></Box>
+                        <Box sx={{ width: { xs: "100%", sm: "100%", md: "60%", lg: "60%" }, display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", gap: "15px", verticalAlign: "middle" }}>
+                            <Box sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#3B579D" }}>
+                                <FacebookIcon />
+                                <a style={{ textDecoration: "none", color: "inherit" }} href="https://www.facebook.com/hendeseoto/">
+                                    <Typography sx={{ '&:hover': { color: "#3B579D" } }}>
+                                        Facebook
+                                    </Typography>
+                                </a>
+                            </Box>
+                            <Box sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#0B65C2" }}>
+                                <LinkedInIcon />
+                                <a style={{ textDecoration: "none", color: "inherit" }} href="https://www.linkedin.com/in/muammer-%C5%9Fen-b55bb9107/?originalSubdomain=tr">
+                                    <Typography sx={{ '&:hover': { color: "#0B65C2" } }}>
+                                        LinkedIn
+                                    </Typography>
+                                </a>
+                            </Box>
+                            <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                                <img style={{ width: "20px", height: "20px", color: "#F6E106" }} src="https://s0.shbdn.com/assets/images/sahibinden-logo:62af0108bd5214afd5c4e1595fc17339.png" />
+                                <a style={{ textDecoration: "none", color: "inherit" }} href="https://hendeseoto.sahibinden.com/">
+                                    <Typography >
+                                        Sahibinden
+                                    </Typography>
+                                </a>
+                            </Box>
                         </Box>
                     </Box>
+
                 </Container>
                 <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: "15px" }}>
                     <Typography variant="subtitle1">

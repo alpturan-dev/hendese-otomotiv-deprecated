@@ -30,7 +30,7 @@ function Navbar() {
             >
                 <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", flexDirection: { xs: "column", sm: "column", md: "column", lg: "row" }, gap: "10px", fontSize: "0.8rem" }}>
                     <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                        <LocationOnRoundedIcon /> Arifbey, Hendese Otomotiv, Adnan Menderes Caddesi No:33A, 54580 Arifiye/SAKARYA &emsp; &emsp;
+                        <LocationOnRoundedIcon /> Arifbey, Adnan Menderes Caddesi No:33A, 54580 Arifiye/SAKARYA &emsp; &emsp;
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
                         <PhoneInTalkRoundedIcon /> +90 530 360 41 05
