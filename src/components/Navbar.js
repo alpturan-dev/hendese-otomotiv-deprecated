@@ -42,13 +42,13 @@ function Navbar() {
                     maxWidth="lg"
                     sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "20px 0", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}
                 >
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "15px" }}>
+                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "120px", sm: "120px", md: "200px" }, height: { xs: "65px", sm: "65px", md: "110px" } }}>
                         <img
                             src={`${logo}?w=150&h=150&fit=crop&auto=format`}
                             srcSet={`${logo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
                             alt={logo}
                             loading="lazy"
-                            style={{ width: "200px", height: "110px" }}
+                            style={{ width: "100%" }}
                         />
                     </Box>
                     <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -124,7 +124,7 @@ function Navbar() {
                                 </Link>
                             </li>
                             <Shake h={3} v={0} r={3}>
-                                <a style={{ textDecoration: "none" }} href="tel:05532654734">
+                                <a style={{ textDecoration: "none" }} href="tel:05303604105">
                                     <Box
                                         sx={{
                                             display: "flex",

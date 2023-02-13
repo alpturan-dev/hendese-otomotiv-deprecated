@@ -9,7 +9,7 @@ function Footer() {
             <Box sx={{ bgcolor: "secondary.main", borderTop: "2px solid #ddd" }}>
                 <Container sx={{ paddingY: "30px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "30px", justifyContent: "space-between" }}>
                     <Box sx={{ width: "100%" }}>
-                        <Box sx={{ display: "flex", alignItems: "center", justifyContent: { md: "center" }, gap: "15px" }}>
+                        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "15px" }}>
                             <img
                                 src={`${logo}?w=150&h=150&fit=crop&auto=format`}
                                 srcSet={`${logo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
@@ -22,7 +22,7 @@ function Footer() {
                             </Typography>
                         </Box>
                     </Box>
-                    <Box sx={{ width: { xs: "100%", sm: "100%", md: "60%", lg: "60%" }, display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", gap: "15px" }}>
+                    <Box sx={{ width: { xs: "100%", sm: "100%", md: "60%", lg: "60%" }, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "15px" }}>
                         <Box sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#3B579D" }}>
                             <FacebookIcon />
                             <a style={{ textDecoration: "none", color: "inherit" }} href="https://www.facebook.com/hendeseoto/">
