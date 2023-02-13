@@ -27,7 +27,7 @@ function Contact() {
                             </a>
                         </Typography>
                         <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
-                            <LocalPhoneIcon sx={{ color: "primary.main" }} />
+                            <LocalPhoneIcon sx={{ color: "#1B1B1B" }} />
                             Telefon: <a href="tel:05303604105" style={{ color: "#3F3F95" }}>+90 530 360 41 05</a>
                         </Typography>
                         <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
