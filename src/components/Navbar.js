@@ -40,9 +40,9 @@ function Navbar() {
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container
                     maxWidth="lg"
-                    sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "20px 0", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}
+                    sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "20px 5px", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}
                 >
-                    <Box sx={{ margin: { xs: "0 auto", sm: "0 auto", md: "0", lg: "0" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "140px", sm: "140px", md: "200px" }, height: { xs: "80px", sm: "80px", md: "110px" } }}>
+                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "130px", sm: "130px", md: "130px", lg: "200px" }, height: { xs: "80px", sm: "80px", sm: "80px", lg: "110px" } }}>
                         <img
                             src={`${logo}?w=150&h=150&fit=crop&auto=format`}
                             srcSet={`${logo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
@@ -150,13 +150,13 @@ function Navbar() {
                             </Shake>
                         </Box>
                     </Box>
-                    <Box sx={{ display: { xs: "none", sm: "none", md: "none", lg: "flex" }, alignItems: "center" }}>
+                    <Box sx={{ display: "flex", alignItems: "center", width: { xs: "80px", sm: "80px", md: "80px", lg: "100px" }, height: { xs: "95px", sm: "95px", md: "95px", lg: "115px" } }}>
                         <img
                             src={`${suzukilogo}?w=150&h=150&fit=crop&auto=format`}
                             srcSet={`${suzukilogo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
                             alt={logo}
                             loading="lazy"
-                            style={{ width: "100px", height: "115px" }}
+                            style={{ width: "100%" }}
                         />
                     </Box>
                 </Container>
