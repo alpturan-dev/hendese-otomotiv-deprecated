@@ -54,7 +54,7 @@ function Navbar() {
                     <Box sx={{ display: "flex", flexDirection: "column" }}>
                         <Button onClick={handleMenu} sx={{ marginY: "10px", display: { xs: "flex", sm: "flex", md: "none", lg: "none" }, alignItems: "center", color: "primary.main" }}><MenuIcon sx={{ width: "40px", height: "40px" }} /></Button>
                         <Box
-                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "1rem", fontWeight: "bold", display: { xs: menu ? "flex" : "none", sm: menu ? "flex" : "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "20px" }}
+                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "0.9rem", fontWeight: "bold", display: { xs: menu ? "flex" : "none", sm: menu ? "flex" : "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "20px" }}
                         >
                             <li>
                                 <Link href="/" sx={{
@@ -130,7 +130,6 @@ function Navbar() {
                                             display: "flex",
                                             alignItems: "center",
                                             justifyContent: "center",
-                                            fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.3rem" },
                                             color: "primary.main",
                                             gap: "10px",
                                             transition: "0.5s",
