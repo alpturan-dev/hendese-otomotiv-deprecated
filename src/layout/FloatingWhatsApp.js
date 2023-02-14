@@ -1,11 +1,11 @@
 import React from 'react'
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
-import logo from '../assets/logo.jpeg'
+import kucuklogo from '../assets/kucuklogo.jpeg'
 
 export default function App() {
     return (
         <FloatingWhatsApp
-            avatar={logo}
+            avatar={kucuklogo}
             statusMessage=""
             chatMessage="Merhaba! 🤝 Nasıl yardımcı olabilirim?"
             phoneNumber="+905303604105"

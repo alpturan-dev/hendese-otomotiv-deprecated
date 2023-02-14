@@ -28,11 +28,11 @@ function Contact() {
                         </iframe>
                     </Box>
                     <Box sx={{
-                        background: "white", width: { xs: "100%", sm: "100%", md: "50%" }, height: "447px", display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", paddingLeft: "20px", gap: "20px", border: "1px solid #ddd", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                        background: "linear-gradient(45deg, #eee 10%, #fff 90%)", width: { xs: "100%", sm: "100%", md: "50%" }, height: "447px", display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", paddingLeft: "20px", gap: "20px", border: "1px solid #ddd", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
                     }}>
                         <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px", fontWeight: "bolder" }} variant="subtitle1">
                             <LocationOnRoundedIcon sx={{ color: "primary.main" }} />
-                            Adres: <a href="https://www.google.com/maps/place/Hendese+Otomotiv/@40.7154177,30.3565584,15z/data=!4m6!3m5!1s0x14ccb1220ad01335:0xab9ab46c1065c7b3!8m2!3d40.7154177!4d30.3565584!16s%2Fg%2F11rjrwvg33?sa=X&ved=2ahUKEwj7vuuGn5P9AhVEOHoKHUVPD7MQ_BJ6BAhSEAg&coh=164777&entry=tt" style={{ color: "#3F3F95" }}>
+                            Adres: <a href="https://www.google.com/maps/place/Hendese+Otomotiv/@40.7154177,30.3565584,15z/data=!4m6!3m5!1s0x14ccb1220ad01335:0xab9ab46c1065c7b3!8m2!3d40.7154177!4d30.3565584!16s%2Fg%2F11rjrwvg33?sa=X&ved=2ahUKEwj7vuuGn5P9AhVEOHoKHUVPD7MQ_BJ6BAhSEAg&coh=164777&entry=tt" style={{ color: "#3F3F95", fontWeight: "light" }}>
                                 Arifbey, Adnan Menderes Caddesi No:33A, 54580 Arifiye/SAKARYA
                             </a>
                         </Typography>

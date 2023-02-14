@@ -37,7 +37,7 @@ function Footer() {
                                 sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#118C7E" }}
                             >
                                 <WhatsAppIcon />
-                                <a href="https://wa.me/05303604105" style={{ textDecoration: "none", color: "inherit" }}>
+                                <a href="https://wa.me/905303604105" style={{ textDecoration: "none", color: "inherit" }}>
                                     <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
                                         WhatsApp
                                     </Typography>
