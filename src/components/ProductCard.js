@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Shake } from 'reshake';
-import { Container, Box, Typography, Grid, CardContent, Card } from '@mui/material'
+import { Box, Typography, Grid, CardContent, Card } from '@mui/material'
 import { Navigate } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SellIcon from '@mui/icons-material/Sell';

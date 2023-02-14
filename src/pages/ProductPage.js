@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Navbar from '../components/Navbar'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
@@ -26,8 +26,10 @@ function ProductPage() {
                                     width: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
                                     height: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
                                 }}>
-                                    <img src={product.image}
+                                    <img
+                                        src={product.image}
                                         style={{ width: "100%", height: "100%", borderRadius: "5px" }}
+                                        alt={product.image}
                                     />
                                 </Box>
                             </Zoom>

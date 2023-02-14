@@ -10,12 +10,9 @@ import SparePartContext from '../context/SparePartContext';
 export default function SelectVariants() {
     const { categories, filterCategory, setFilterCategory } = useContext(SparePartContext);
 
-    const handleChange = (event) => {
-        setFilterCategory(event.target.value);
-    };
-
     useEffect(() => {
         setFilterCategory("Tüm Kategoriler")
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -24,7 +21,7 @@ export default function SelectVariants() {
                 <InputLabel id="demo-simple-select-standard-label">Kategori</InputLabel>
                 <Select
                     value={filterCategory}
-                    onChange={handleChange}
+                    onChange={(event) => setFilterCategory(event.target.value)}
                     color="secondary"
                 >
                     <MenuItem value="Tüm Kategoriler">

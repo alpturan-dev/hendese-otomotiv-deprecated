@@ -1,25 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Shake } from 'reshake';
+import HamburgerMenu from './HamburgerMenu';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded';
-import MenuIcon from '@mui/icons-material/Menu';
 import DropdownMenu from './DropdownMenu'
 import logo from '../assets/logo.jpeg'
 import suzukilogo from '../assets/suzuki-logo.jpeg'
-import { CssBaseline, Container, Box, Typography, Link, Button } from '@mui/material';
+import { CssBaseline, Container, Box, Typography, Link } from '@mui/material';
 function Navbar() {
-    const [menu, setMenu] = useState(false);
-    const handleMenu = () => {
-        setMenu(!menu);
-    }
     return (
-        <React.Fragment>
+        <React.Fragment id="outer-container">
             <CssBaseline />
             <Box
                 sx={{
                     display: "flex",
                     justifyContent: "center",
-                    padding: "10px 0",
+                    padding: "15px 0",
                     backgroundColor: "primary.main",
                     color: "#fff",
                     transition: "0.5s",
@@ -28,21 +24,24 @@ function Navbar() {
                     },
                 }}
             >
-                <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", flexDirection: { xs: "column", sm: "column", md: "column", lg: "row" }, gap: "10px", fontSize: "0.8rem" }}>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                        <LocationOnRoundedIcon /> Arifbey, Adnan Menderes Caddesi No:33A, 54580 Arifiye/SAKARYA &emsp; &emsp;
+                <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, gap: { xs: "5px", sm: "5px", md: "30px", lg: "40px" }, fontSize: { xs: "0.6rem", sm: "0.6rem", md: "0.6rem", lg: "0.7rem" } }}>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                        <LocationOnRoundedIcon />Arifbey, Adnan Menderes Caddesi No:33A, 54580 Arifiye/SAKARYA
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                        <PhoneInTalkRoundedIcon /> +90 530 360 41 05
+                    <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                        <PhoneInTalkRoundedIcon />+90 530 360 41 05
                     </Box>
                 </Typography>
             </Box>
-            <Box sx={{ bgcolor: "secondary.main" }}>
+            <Box sx={{ display: { xs: "flex", sm: "flex", md: "none", lg: "none" } }}>
+                <HamburgerMenu pageWrapId="page-wrap" outerContainerId="outer-container" />
+            </Box>
+            <Box sx={{ bgcolor: "secondary.main" }} id="page-wrap">
                 <Container
                     maxWidth="lg"
                     sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "20px 5px", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}
                 >
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "130px", sm: "130px", md: "130px", lg: "200px" }, height: { xs: "80px", sm: "80px", sm: "80px", lg: "110px" } }}>
+                    <Box sx={{ margin: { xs: "auto", sm: "auto", md: "0", lg: "0" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "130px", sm: "130px", md: "130px", lg: "180px" }, height: { xs: "80px", sm: "80px", md: "80px", lg: "100px" } }}>
                         <img
                             src={`${logo}?w=150&h=150&fit=crop&auto=format`}
                             srcSet={`${logo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
@@ -52,9 +51,8 @@ function Navbar() {
                         />
                     </Box>
                     <Box sx={{ display: "flex", flexDirection: "column" }}>
-                        <Button onClick={handleMenu} sx={{ marginY: "10px", display: { xs: "flex", sm: "flex", md: "none", lg: "none" }, alignItems: "center", color: "primary.main" }}><MenuIcon sx={{ width: "40px", height: "40px" }} /></Button>
                         <Box
-                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "0.9rem", fontWeight: "bold", display: { xs: menu ? "flex" : "none", sm: menu ? "flex" : "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "20px" }}
+                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "0.9rem", fontWeight: "bold", display: { xs: "none", sm: "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "20px" }}
                         >
                             <li>
                                 <Link href="/" sx={{
@@ -150,7 +148,7 @@ function Navbar() {
                             </Shake>
                         </Box>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", width: { xs: "80px", sm: "80px", md: "80px", lg: "100px" }, height: { xs: "95px", sm: "95px", md: "95px", lg: "115px" } }}>
+                    <Box sx={{ display: { xs: "none", sm: "none", md: "flex", lg: "flex" }, alignItems: "center", width: { xs: "80px", sm: "80px", md: "80px", lg: "100px" }, height: { xs: "95px", sm: "95px", md: "95px", lg: "115px" } }}>
                         <img
                             src={`${suzukilogo}?w=150&h=150&fit=crop&auto=format`}
                             srcSet={`${suzukilogo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}

@@ -10,20 +10,18 @@ import SparePartContext from '../context/SparePartContext';
 export default function SelectVariants() {
     const { models, filterModel, setFilterModel } = useContext(SparePartContext);
 
-    const handleChange = (event) => {
-        setFilterModel(event.target.value);
-    };
-
     useEffect(() => {
         setFilterModel("Tüm Modeller")
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     return (
         <div>
             <FormControl variant="filled" sx={{ m: 1, minWidth: 230 }}>
                 <InputLabel id="demo-simple-select-standard-label">Model</InputLabel>
                 <Select
                     value={filterModel}
-                    onChange={handleChange}
+                    onChange={(event) => setFilterModel(event.target.value)}
                     color="secondary"
                 >
                     <MenuItem value="Tüm Modeller">

@@ -64,6 +64,7 @@ function AdminPanel() {
             toast.dismiss();
         }
         getProducts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const addProduct = async () => {
         toast.loading("Ürün ekleniyor...")

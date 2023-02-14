@@ -1,5 +1,5 @@
-import { Container, Box, Typography, Grid, CardContent, Card } from '@mui/material'
-import React, { useContext, useEffect, useState } from 'react'
+import { Container, Box, Typography, Grid } from '@mui/material'
+import React, { useContext, useEffect } from 'react'
 import ProductCard from '../components/ProductCard';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
@@ -7,10 +7,8 @@ import UserContext from '../context/UserContext';
 import SparePartContext from '../context/SparePartContext';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../firebase'
-import yedekparca1 from '../assets/yedekparca1.jpeg'
-import yedekparca2 from '../assets/yedekparca2.jpeg'
-import AwesomeSlider from 'react-awesome-slider';
-import withAutoplay from 'react-awesome-slider/dist/autoplay';
+// import AwesomeSlider from 'react-awesome-slider';
+// import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
 
 function Dashboard() {
@@ -26,9 +24,10 @@ function Dashboard() {
             console.log(displaydata);
         }
         getProducts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const AutoplaySlider = withAutoplay(AwesomeSlider);
+    // const AutoplaySlider = withAutoplay(AwesomeSlider);
 
     return (
         <>

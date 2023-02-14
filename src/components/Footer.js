@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../assets/logo.jpeg'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { Box, Container, Icon, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 function Footer() {
     return (
         <>
@@ -42,7 +42,7 @@ function Footer() {
                                 </a>
                             </Box>
                             <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                                <img style={{ width: "20px", height: "20px", color: "#F6E106" }} src="https://s0.shbdn.com/assets/images/sahibinden-logo:62af0108bd5214afd5c4e1595fc17339.png" />
+                                <img style={{ width: "20px", height: "20px", color: "#F6E106" }} src="https://s0.shbdn.com/assets/images/sahibinden-logo:62af0108bd5214afd5c4e1595fc17339.png" alt="Sahibinden" />
                                 <a style={{ textDecoration: "none", color: "inherit" }} href="https://hendeseoto.sahibinden.com/">
                                     <Typography >
                                         Sahibinden
