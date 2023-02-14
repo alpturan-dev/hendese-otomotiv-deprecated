@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../assets/logo.jpeg'
 import FacebookIcon from '@mui/icons-material/Facebook';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { Box, Container, Typography } from '@mui/material'
 function Footer() {
     return (
@@ -33,11 +33,13 @@ function Footer() {
                                     </Typography>
                                 </a>
                             </Box>
-                            <Box sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#0B65C2" }}>
-                                <LinkedInIcon />
-                                <a style={{ textDecoration: "none", color: "inherit" }} href="https://www.linkedin.com/in/muammer-%C5%9Fen-b55bb9107/?originalSubdomain=tr">
-                                    <Typography sx={{ '&:hover': { color: "#0B65C2" } }}>
-                                        LinkedIn
+                            <Box
+                                sx={{ display: "flex", alignItems: "center", gap: "6px", color: "#118C7E" }}
+                            >
+                                <WhatsAppIcon />
+                                <a href="https://wa.me/05303604105" style={{ textDecoration: "none", color: "inherit" }}>
+                                    <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                        WhatsApp
                                     </Typography>
                                 </a>
                             </Box>

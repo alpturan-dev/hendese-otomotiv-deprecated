@@ -1,6 +1,7 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../layout/Navbar'
+import Footer from '../layout/Footer'
+import FloatingWhatsApp from '../layout/FloatingWhatsApp'
 import { Box, Container, Typography } from '@mui/material'
 import EmailIcon from '@mui/icons-material/Email';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -13,7 +14,7 @@ function Contact() {
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container disableGutters sx={{ paddingTop: "20px" }}>
-                    <Typography variant="h5" sx={{ textIndent: "14px", textUnderlineOffset: "8px", textDecoration: "underline" }}>İletişim</Typography>
+                    <Typography variant="h5" sx={{ textIndent: "14px", textUnderlineOffset: "8px", textDecoration: "underline", fontWeight: "bolder" }}>İletişim</Typography>
                 </Container>
                 <Container disableGutters sx={{ paddingTop: "20px", paddingBottom: "50px", paddingX: { xs: "5px", sm: "10px", md: "0px", lg: "0px" }, height: "100%", width: "100%", display: "flex", alignItems: "center", flexDirection: { xs: "column", sm: "column", md: "row" }, gap: "40px" }}>
                     <Box sx={{ width: { xs: "95%", sm: "95%", md: "50%" } }}>
@@ -26,34 +27,37 @@ function Contact() {
                         >
                         </iframe>
                     </Box>
-                    <Box sx={{ background: "#eee", width: { xs: "100%", sm: "100%", md: "50%" }, height: "447px", display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", paddingLeft: "20px", gap: "20px", border: "1px solid #ddd", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset" }}>
-                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
+                    <Box sx={{
+                        background: "white", width: { xs: "100%", sm: "100%", md: "50%" }, height: "447px", display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", paddingLeft: "20px", gap: "20px", border: "1px solid #ddd", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+                    }}>
+                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px", fontWeight: "bolder" }} variant="subtitle1">
                             <LocationOnRoundedIcon sx={{ color: "primary.main" }} />
                             Adres: <a href="https://www.google.com/maps/place/Hendese+Otomotiv/@40.7154177,30.3565584,15z/data=!4m6!3m5!1s0x14ccb1220ad01335:0xab9ab46c1065c7b3!8m2!3d40.7154177!4d30.3565584!16s%2Fg%2F11rjrwvg33?sa=X&ved=2ahUKEwj7vuuGn5P9AhVEOHoKHUVPD7MQ_BJ6BAhSEAg&coh=164777&entry=tt" style={{ color: "#3F3F95" }}>
                                 Arifbey, Adnan Menderes Caddesi No:33A, 54580 Arifiye/SAKARYA
                             </a>
                         </Typography>
-                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
+                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px", fontWeight: "bolder" }} variant="subtitle1">
                             <LocalPhoneIcon sx={{ color: "#1B1B1B" }} />
                             Telefon: <a href="tel:05303604105" style={{ color: "#3F3F95" }}>+90 530 360 41 05</a>
                         </Typography>
-                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
+                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px", fontWeight: "bolder" }} variant="subtitle1">
                             <EmailIcon sx={{ color: "#1E60EF" }} />
                             E-mail: <a href="mailto:hendeseoto@gmail.com" style={{ color: "#3F3F95" }}>hendeseoto@gmail.com</a>
                         </Typography>
-                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px", }} variant="subtitle1">
+                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px", fontWeight: "bolder", }} variant="subtitle1">
                             <FacebookIcon sx={{ color: "#3B579D" }} />
                             Facebook: <a href="https://www.facebook.com/hendeseoto/" style={{ color: "#3F3F95" }}>
                                 www.facebook.com/hendeseoto/
                             </a>
                         </Typography>
-                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }} variant="subtitle1">
+                        <Typography sx={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px", fontWeight: "bolder" }} variant="subtitle1">
                             <img style={{ width: "20px", height: "20px", color: "#F6E106" }} src="https://s0.shbdn.com/assets/images/sahibinden-logo:62af0108bd5214afd5c4e1595fc17339.png" alt="Sahibinden" />
                             Sahibinden: <a href="https://hendeseoto.sahibinden.com/" style={{ color: "#3F3F95" }}>hendeseoto.sahibinden.com/</a>
                         </Typography>
                     </Box>
                 </Container>
             </Box>
+            <FloatingWhatsApp />
             <Footer />
         </>
     )

@@ -1,12 +1,13 @@
 import { Container, Box, Typography, Grid } from '@mui/material'
 import React, { useContext, useEffect } from 'react'
 import ProductCard from '../components/ProductCard';
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer';
+import Navbar from '../layout/Navbar'
+import Footer from '../layout/Footer';
 import UserContext from '../context/UserContext';
 import SparePartContext from '../context/SparePartContext';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../firebase'
+import FloatingWhatsApp from '../layout/FloatingWhatsApp'
 // import AwesomeSlider from 'react-awesome-slider';
 // import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
@@ -63,7 +64,7 @@ function Dashboard() {
                             </div>
                         </AutoplaySlider>
                     </Box> */}
-                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "5px", marginBottom: "20px" }}>Tüm Ürünler</Typography>
+                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "5px", marginBottom: "20px" }}>Tüm Parçalar</Typography>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         {products.map((product, key) => (
                             <ProductCard key={key} product={product} />
@@ -89,6 +90,7 @@ function Dashboard() {
                     })}
                 </Container>
             </Box>
+            <FloatingWhatsApp />
             <Footer />
         </>
     )

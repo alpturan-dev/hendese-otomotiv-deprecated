@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../layout/Navbar'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import { Box, Container, Typography } from '@mui/material'
@@ -8,7 +8,8 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useLocation } from 'react-router-dom';
-import Footer from '../components/Footer'
+import Footer from '../layout/Footer'
+import FloatingWhatsApp from '../layout/FloatingWhatsApp'
 function ProductPage() {
     const location = useLocation();
     const product = location.state;
@@ -116,6 +117,7 @@ function ProductPage() {
                     </Box>
                 </Container>
             </Box>
+            <FloatingWhatsApp />
             <Footer />
         </>
     )
