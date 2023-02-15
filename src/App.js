@@ -12,7 +12,7 @@ import {
 import AdminPanel from './pages/AdminPanel';
 import ProductPage from './pages/ProductPage';
 import Contact from './pages/Contact';
-
+import CategoryPage from './pages/CategoryPage';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,13 +27,16 @@ const router = createBrowserRouter([
     element: <Login />
   },
   {
-    path: "/product",
+    path: "/product/:productId",
     element: <ProductPage />
-  }
-  ,
+  },
   {
     path: "/contact",
     element: <Contact />
+  },
+  {
+    path: `/kategori/:categoryName`,
+    element: <CategoryPage />
   }
 ]);
 function App() {

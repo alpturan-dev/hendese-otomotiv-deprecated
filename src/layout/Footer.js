@@ -15,7 +15,7 @@ function Footer() {
                                 srcSet={`${logo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
                                 alt={logo}
                                 loading="lazy"
-                                style={{ width: "160px", height: "80px" }}
+                                style={{ width: "130px", height: "80px" }}
                             />
                             <Typography variant="subtitle1" sx={{ fontWeight: "bolder", fontStyle: "italic", fontFamily: "montserrat" }}>
                                 Suzuki Yedek Parça

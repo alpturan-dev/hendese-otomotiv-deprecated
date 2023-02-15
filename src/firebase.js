@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore } from 'firebase/firestore/lite';
 import { getStorage } from 'firebase/storage';
 import toast from 'react-hot-toast';
@@ -36,11 +36,3 @@ export const logout = async () => {
         toast.error(error.message);
     }
 }
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        console.log("User:", user);
-    } else {
-        console.log("kullanici cikis yapti");
-    }
-});

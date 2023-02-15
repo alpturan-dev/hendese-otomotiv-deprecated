@@ -57,7 +57,7 @@ function ProductCard({ product }) {
                         </Box>
                     </CardContent>
                 </Card>
-                {redirectProductPage && <Navigate to="/product" state={product} replace={true} />}
+                {redirectProductPage && <Navigate to={`/product/${product.name + product.model}`} state={product} replace={true} />}
             </Grid>
         </>
     )

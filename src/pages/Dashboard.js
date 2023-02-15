@@ -11,6 +11,7 @@ import FloatingWhatsApp from '../layout/FloatingWhatsApp'
 // import AwesomeSlider from 'react-awesome-slider';
 // import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
+import { toast, Toaster } from 'react-hot-toast';
 
 function Dashboard() {
     const { products, setProducts } = useContext(UserContext);
@@ -19,12 +20,14 @@ function Dashboard() {
 
     useEffect(() => {
         const getProducts = async () => {
+            toast.loading("");
             const data = await getDocs(productsRef);
             const displaydata = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             setProducts(displaydata);
-            console.log(displaydata);
         }
         getProducts();
+        toast.dismiss();
+        console.log(products)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -33,6 +36,10 @@ function Dashboard() {
     return (
         <>
             <Navbar />
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container sx={{ paddingY: "40px" }}>
                     {/* //Slider */}
@@ -64,27 +71,27 @@ function Dashboard() {
                             </div>
                         </AutoplaySlider>
                     </Box> */}
-                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "5px", marginBottom: "20px" }}>Tüm Parçalar</Typography>
+                    <h1 style={{ display: "none" }}>Tüm Suzuki Yedek Parçalar</h1>
+                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "5px", marginBottom: "20px" }}>Tüm Suzuki Yedek Parçalar</Typography>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                        {products.map((product, key) => (
-                            <ProductCard key={key} product={product} />
+                        {products.map((product, index) => (
+                            <ProductCard key={index} product={product} />
                         ))}
                     </Grid>
-                    {categories.map((category) => {
+                    {categories.map((category, index) => {
                         const filteredProducts = products.filter((product) => (product.category === category));
-                        console.log(filteredProducts.length)
                         return (
                             filteredProducts.length > 0 && (
-                                <>
+                                <div key={index}>
                                     <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "8px", marginY: "20px" }}>
                                         {category}
                                     </Typography>
                                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ marginX: "auto" }}>
-                                        {filteredProducts.map((product, key) => (
-                                            <ProductCard key={key} product={product} />
+                                        {filteredProducts.map((product, index) => (
+                                            <ProductCard key={index} product={product} />
                                         ))}
                                     </Grid>
-                                </>
+                                </div>
                             )
                         )
                     })}

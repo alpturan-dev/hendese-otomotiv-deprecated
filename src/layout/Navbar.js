@@ -9,7 +9,7 @@ import suzukilogo from '../assets/suzuki-logo.jpeg'
 import { CssBaseline, Container, Box, Typography, Link } from '@mui/material';
 function Navbar() {
     return (
-        <React.Fragment id="outer-container">
+        <React.Fragment>
             <CssBaseline />
             <Box
                 sx={{

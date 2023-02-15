@@ -8,22 +8,23 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 function Contact() {
-
     return (
         <>
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container disableGutters sx={{ paddingTop: "20px" }}>
-                    <Typography variant="h5" sx={{ textIndent: "14px", textUnderlineOffset: "8px", textDecoration: "underline", fontWeight: "bolder" }}>İletişim</Typography>
+                    <Typography variant="h5" sx={{ textIndent: "30px", textUnderlineOffset: "8px", textDecoration: "underline", fontWeight: "bolder" }}>
+                        İletişim
+                    </Typography>
                 </Container>
                 <Container disableGutters sx={{ paddingTop: "20px", paddingBottom: "50px", paddingX: { xs: "5px", sm: "10px", md: "0px", lg: "0px" }, height: "100%", width: "100%", display: "flex", alignItems: "center", flexDirection: { xs: "column", sm: "column", md: "row" }, gap: "40px" }}>
                     <Box sx={{ width: { xs: "95%", sm: "95%", md: "50%" } }}>
                         <iframe title="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12096.472197119363!2d30.3565584!3d40.7154177!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ccb1220ad01335%3A0xab9ab46c1065c7b3!2sHendese%20Otomotiv!5e0!3m2!1sen!2str!4v1676298897133!5m2!1sen!2str"
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12096.472197119363!2d30.3565584!3d40.7154177!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ccb1220ad01335%3A0xab9ab46c1065c7b3!2sHendese%20Otomotiv!5e0!3m2!1sen!2str!4v1676298897133!5m2!1sen!2str"
                             style={{ height: "447px", width: "100%", border: "1px solid #ddd", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset" }}
-                            allowfullscreen=""
+                            allowFullScreen=""
                             loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
+                            referrerPolicy="no-referrer-when-downgrade"
                         >
                         </iframe>
                     </Box>

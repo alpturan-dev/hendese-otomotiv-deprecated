@@ -18,7 +18,6 @@ function ProductPage() {
     const [active, setActive] = useState(0);
     function handleActive(index) {
         setActive(index);
-        console.log("index", index)
     }
     return (
         <>
@@ -37,7 +36,7 @@ function ProductPage() {
                                     '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
                                     borderRadius: "5px"
                                 }}>
-                                    <ZoomInIcon sx={{ width: "35px", height: "35px", position: "absolute", top: "10px", right: "10px" }} />
+                                    <ZoomInIcon sx={{ width: "30px", height: "30px", position: "absolute", top: "10px", right: "10px" }} />
                                     <img
                                         src={product.images[active]}
                                         style={{ width: "100%", height: "100%" }}
@@ -49,6 +48,7 @@ function ProductPage() {
                                 {product.images.map((image, index) => {
                                     return (
                                         <Box
+                                            key={index}
                                             onClick={() => handleActive(index)}
                                             sx={{
                                                 width: { xs: "80px", sm: "80px", md: "100px", lg: "100px" },
@@ -57,7 +57,7 @@ function ProductPage() {
                                                 '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
                                                 borderRadius: "5px"
                                             }}>
-                                            <img style={{ width: "100%", height: "100%" }} src={image} alt={image} key={index} />
+                                            <img style={{ width: "100%", height: "100%" }} src={image} alt={image} />
                                         </Box>
                                     )
                                 }
@@ -79,7 +79,7 @@ function ProductPage() {
                                             {product.price}₺
                                         </Typography>
                                     </Box>
-                                    <Typography sx={{ display: "flex", alignItems: "center", fontWeight: "800", gap: "10px" }}>
+                                    <Typography sx={{ display: "flex", alignItems: "center", fontWeight: "light", gap: "10px" }}>
                                         <InventoryIcon sx={{ color: "primary.main" }} />
                                         Stok adedi: {product.stock}
                                     </Typography>
@@ -142,12 +142,11 @@ function ProductPage() {
                                         </Box>
                                     </Box>
                                 </Box>
-
                             </Box>
                         </Box>
                     </Box>
                 </Container>
-            </Box >
+            </Box>
             <FloatingWhatsApp />
             <Footer />
         </>
