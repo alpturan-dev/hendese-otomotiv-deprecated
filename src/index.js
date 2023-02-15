@@ -1,9 +1,8 @@
 import React from 'react';
-import { hydrateRoot, createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { createTheme, ThemeProvider } from '@mui/material';
-import { hydrate } from "react-dom";
 const theme = createTheme({
   palette: {
     primary: {
@@ -18,19 +17,9 @@ const theme = createTheme({
     fontFamily: ['"Montserrat"', 'sans-serif'].join(','),
   },
 });
-
-const rootElement = document.getElementById("root");
-if (rootElement.hasChildNodes()) {
-  hydrateRoot(rootElement,
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>)
-  hydrate(<App />, rootElement);
-} else {
-  console.log("rofl");
-  const root = createRoot(rootElement);
-  root.render(
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>)
-}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>
+);
