@@ -24,8 +24,8 @@ function AdminPanel() {
     const {
         setOpen,
         handleOpen,
-        newProductImage,
-        setNewProductImage,
+        newProductImages,
+        setNewProductImages,
         newProductName,
         setNewProductName,
         newProductDescription,
@@ -66,18 +66,19 @@ function AdminPanel() {
         getProducts();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     const addProduct = async () => {
         toast.loading("Ürün ekleniyor...")
         try {
             await addDoc(productsRef,
-                { image: newProductImage, name: newProductName, description: newProductDescription, stock: newProductStock, oem: newProductOEM, price: newProductPrice, category: newProductCategory, model: newProductModel });
+                { images: newProductImages, name: newProductName, description: newProductDescription, stock: newProductStock, oem: newProductOEM, price: newProductPrice, category: newProductCategory, model: newProductModel });
         } catch (e) {
-            console.log(e.message);
+            console.log(e.message, typeof (newProductImages));
         }
         setProducts([...products,
-        { image: newProductImage, name: newProductName, description: newProductDescription, stock: newProductStock, oem: newProductOEM, price: newProductPrice, category: newProductCategory, model: newProductModel }]);
+        { images: newProductImages, name: newProductName, description: newProductDescription, stock: newProductStock, oem: newProductOEM, price: newProductPrice, category: newProductCategory, model: newProductModel }]);
         setNewProductName(null);
-        setNewProductImage(null);
+        setNewProductImages([]);
         setNewProductDescription(null);
         setNewProductStock(null);
         setNewProductOEM(null);
@@ -92,15 +93,18 @@ function AdminPanel() {
     const deleteProduct = async (product) => {
         toast.loading("Ürün siliniyor...")
         const userDoc = doc(db, 'products', product.id);
+        console.log("userDoc", product.images);
+        product.images.map((image) => {
+            const deleteRef = ref(storage, image);
+            return deleteObject(deleteRef).then(() => {
+                toast.dismiss();
+                toast.success("Ürün silindi!")
+            }).catch((error) => {
+                toast.dismiss();
+                toast.error("Ürün silinemedi!" + error.message)
+            });
+        })
         await deleteDoc(userDoc);
-        const deleteRef = ref(storage, product.image);
-        deleteObject(deleteRef).then(() => {
-            toast.dismiss();
-            toast.success("Ürün silindi!")
-        }).catch((error) => {
-            toast.dismiss();
-            toast.error("Ürün silinemedi!" + error.message)
-        });
         setProducts(products.filter((item) => item.id !== product.id));
     }
 

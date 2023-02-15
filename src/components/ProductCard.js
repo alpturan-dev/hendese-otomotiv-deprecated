@@ -25,7 +25,7 @@ function ProductCard({ product }) {
                 <Card sx={{ minWidth: 280, height: "450px", boxShadow: '1px 2px 9px #ddd', '&:hover': { transform: "scale(1.05)" }, transition: "transform .4s ease-in-out", WebkitTransition: "transform .4s ease-in-out", MozTransition: "transform .4s ease-in-out", OTransition: "transform .4s ease-in-out" }}>
                     <img
                         style={imgStyle}
-                        src={product.image}
+                        src={product.images[0]}
                         title={product.name}
                         alt={product.name}
                     />

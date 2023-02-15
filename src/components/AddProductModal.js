@@ -19,27 +19,38 @@ function AddProductModal({ addProduct }) {
     const {
         open,
         handleClose,
-        newProductImage,
-        setNewProductImage,
+        newProductImages,
+        setNewProductImages,
         setNewProductName,
         setNewProductDescription,
         setNewProductStock,
         setNewProductOEM,
         setNewProductPrice,
     } = useContext(ModalContext);
-    const [loadImage, setLoadImage] = useState(false);
+    const [isUploaded, setIsUploaded] = useState(false);
+    const [imageFiles, setImageFiles] = useState([]);
+    const handleImage = (e) => {
+        for (let i = 0; i < e.target.files.length; i++) {
+            const newImage = e.target.files[i];
+            newImage["id"] = Math.random();
+            setImageFiles((prevState) => [...prevState, newImage]);
+        }
+    }
     const uploadImage = async () => {
         toast.loading('Resim yükleniyor...');
-        if (newProductImage == null) return;
-        const imageRef = ref(storage, `images/${newProductImage.name + v4()}`);
-        uploadBytes(imageRef, newProductImage).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                setNewProductImage(url);
-                setLoadImage(true)
-                toast.dismiss();
-                toast.success("Resim yüklendi!");
-            });
-        });
+        imageFiles.map((image) => {
+            const imageRef = ref(storage, `images/${image.name + v4()}`);
+            return uploadBytes(imageRef, image)
+                .then((snapshot) => {
+                    getDownloadURL(snapshot.ref)
+                        .then((url) => {
+                            setNewProductImages((prevState) => [...prevState, url]);
+                            toast.dismiss();
+                        });
+                });
+        })
+        setIsUploaded(true);
+        toast.success("Resimler yüklendi!");
     }
     return (
         <Modal
@@ -102,20 +113,23 @@ function AddProductModal({ addProduct }) {
                                 boxShadow: "5px 5px 5px gray",
                                 padding: "2rem 4rem"
                             }}>
-                                {loadImage ?
-                                    <img alt={newProductImage} src={newProductImage}
-                                        style={{ width: "100px", height: "100px" }} />
+                                {isUploaded ?
+                                    <Box sx={{ display: "flex", flexDirection: "row", gap: "5px" }}>
+                                        {newProductImages.map((image, index) => (
+                                            <img key={index} src={image} alt={image} style={{ width: "100px", height: "100px" }} />
+                                        ))}
+                                    </Box>
                                     :
                                     <UploadFileIcon style={{ width: "100px", height: "100px" }} />
                                 }
+
                                 <input
                                     type="file"
+                                    multiple
                                     style={{ display: "none" }}
-                                    onChange={(event) => {
-                                        setNewProductImage(event.target.files[0]);
-                                    }}
+                                    onChange={handleImage}
                                 />
-                                <Typography>{newProductImage ? "Dosya secildi!" : "Bir dosya secin"}</Typography>
+                                <Typography>{newProductImages.length !== 0 ? "Resimler seçildi!" : "Bir dosya seçin"}</Typography>
                                 <Button sx={{
                                     backgroundColor: "#1D7091", color: "white", padding: "8px 6px", fontSize: "0.7rem",
                                     '&:hover': {
@@ -124,7 +138,7 @@ function AddProductModal({ addProduct }) {
                                         opacity: "0.9"
                                     }
                                 }} onClick={uploadImage} size="small">
-                                    RESMİ YÜKLE
+                                    RESİMLERİ YÜKLE
                                 </Button>
                             </label>
 

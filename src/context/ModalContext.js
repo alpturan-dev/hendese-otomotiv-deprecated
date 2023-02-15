@@ -6,7 +6,7 @@ export const ModalProvider = ({ children }) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [newProductImage, setNewProductImage] = useState(null);
+    const [newProductImages, setNewProductImages] = useState([]);
     const [newProductName, setNewProductName] = useState("");
     const [newProductDescription, setNewProductDescription] = useState("");
     const [newProductStock, setNewProductStock] = useState("");
@@ -19,8 +19,8 @@ export const ModalProvider = ({ children }) => {
         setOpen,
         handleOpen,
         handleClose,
-        newProductImage,
-        setNewProductImage,
+        newProductImages,
+        setNewProductImages,
         newProductName,
         setNewProductName,
         newProductDescription,

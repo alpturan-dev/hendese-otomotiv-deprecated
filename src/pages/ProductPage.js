@@ -1,10 +1,12 @@
 import React from 'react'
+import { useState } from 'react'
 import Navbar from '../layout/Navbar'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import { Box, Container, Typography } from '@mui/material'
 import SellIcon from '@mui/icons-material/Sell';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useLocation } from 'react-router-dom';
@@ -13,6 +15,11 @@ import FloatingWhatsApp from '../layout/FloatingWhatsApp'
 function ProductPage() {
     const location = useLocation();
     const product = location.state;
+    const [active, setActive] = useState(0);
+    function handleActive(index) {
+        setActive(index);
+        console.log("index", index)
+    }
     return (
         <>
             <Navbar />
@@ -20,21 +27,44 @@ function ProductPage() {
                 <Container sx={{ paddingY: "50px", height: "100%" }}>
                     <Box sx={{ paddingBottom: "100px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: { xs: "center", sm: "center", md: "space-between", lg: "space-between" }, gap: { xs: "40px", sm: "40px", md: "100px", lg: "100px" } }}>
                         <Box
-                            sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}
+                            sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "15px" }}
                         >
-                            <Zoom>
-                                <Box sx={{
-                                    width: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
-                                    height: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
-                                }}>
-                                    <img
-                                        src={product.image}
-                                        style={{ width: "100%", height: "100%", borderRadius: "5px" }}
-                                        alt={product.image}
-                                    />
-                                </Box>
-                            </Zoom>
-
+                            <figure>
+                                <Zoom>
+                                    <Box sx={{
+                                        width: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
+                                        height: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
+                                        border: "2px solid #ddd",
+                                        '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
+                                        borderRadius: "5px"
+                                    }}>
+                                        <ZoomInIcon sx={{ width: "35px", height: "35px", position: "absolute", top: "10px", right: "10px" }} />
+                                        <img
+                                            src={product.images[active]}
+                                            style={{ width: "100%", height: "100%" }}
+                                            alt={product.images[active]}
+                                        />
+                                    </Box>
+                                </Zoom>
+                            </figure>
+                            <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+                                {product.images.map((image, index) => {
+                                    return (
+                                        <Box
+                                            onClick={() => handleActive(index)}
+                                            sx={{
+                                                width: { xs: "80px", sm: "80px", md: "100px", lg: "100px" },
+                                                height: { xs: "80px", sm: "80px", md: "100px", lg: "100px" },
+                                                border: "2px solid #ddd",
+                                                '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
+                                                borderRadius: "5px"
+                                            }}>
+                                            <img style={{ width: "100%", height: "100%" }} src={image} alt={image} key={index} />
+                                        </Box>
+                                    )
+                                }
+                                )}
+                            </Box>
                         </Box>
                         <Box sx={{ display: "flex", flexDirection: "column", width: { xs: "100%", sm: "80%", md: "80%", lg: "80%" }, height: "415px", gap: "20px" }}>
                             <Typography variant="h4">Suzuki {product.model} {product.name}
@@ -70,15 +100,16 @@ function ProductPage() {
                                                 transition: "0.5s",
                                                 padding: "15px 25px",
                                                 borderRadius: "5px",
-                                                boxShadow: "#ed3137 0px 5px 4px",
+                                                boxShadow: "#ed3137 3px 3px 1px",
                                                 '&:hover': {
                                                     opacity: "0.9"
                                                 }
                                             }}
                                         >
-                                            <a href="tel:05303604105" style={{ color: "#f7f7f7", textDecoration: "none" }}>
+                                            <a href="tel:05303604105" style={{ display: "flex", alignItems: "center", flexDirection: "column", gap: "10px", color: "#f7f7f7", textDecoration: "none" }}>
                                                 <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                                    <ShoppingBasketIcon />Hemen Ara!
+                                                    <ShoppingBasketIcon />
+                                                    Hemen Ara!
                                                 </Typography>
                                                 +90 530 360 41 05
                                             </a>
@@ -87,6 +118,8 @@ function ProductPage() {
                                             sx={{
                                                 cursor: "pointer",
                                                 width: "40%",
+                                                height: "100%",
+                                                margin: "auto 0",
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
@@ -95,9 +128,9 @@ function ProductPage() {
                                                 backgroundColor: "#118C7E",
                                                 gap: "10px",
                                                 transition: "0.5s",
-                                                padding: "15px 25px",
+                                                padding: "20px 25px",
                                                 borderRadius: "5px 5px 0 0",
-                                                boxShadow: "#118C7E 5px 5px 5px ",
+                                                boxShadow: "#118C7E 3px 3px 1px ",
                                                 '&:hover': {
                                                     opacity: "0.9"
                                                 }
@@ -116,7 +149,7 @@ function ProductPage() {
                         </Box>
                     </Box>
                 </Container>
-            </Box>
+            </Box >
             <FloatingWhatsApp />
             <Footer />
         </>

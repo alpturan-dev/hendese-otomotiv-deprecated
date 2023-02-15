@@ -46,7 +46,7 @@ function ProductTable({ deleteProduct }) {
                             }}
                         >
                             <TableCell component="th" scope="row">
-                                <img style={{ width: "150px", height: "150px" }} src={product.image} alt={product.image}></img>
+                                <img style={{ width: "150px", height: "150px" }} src={product.images[0]} alt={product.images[0]}></img>
                             </TableCell>
                             <TableCell align="left">{product.name}</TableCell>
                             <TableCell align="left">{product.model}</TableCell>

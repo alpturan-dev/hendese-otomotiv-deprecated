@@ -41,8 +41,9 @@ function Navbar() {
                     maxWidth="lg"
                     sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "20px 5px", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}
                 >
-                    <Link href="/">
-                        <Box sx={{ margin: { xs: "auto", sm: "auto", md: "0", lg: "0" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "130px", sm: "130px", md: "130px", lg: "180px" }, height: { xs: "80px", sm: "80px", md: "80px", lg: "100px" } }}>
+
+                    <Box sx={{ margin: { xs: "auto", sm: "auto", md: "0", lg: "0" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "130px", sm: "130px", md: "130px", lg: "180px" }, height: { xs: "80px", sm: "80px", md: "80px", lg: "100px" } }}>
+                        <Link href="/">
                             <img
                                 src={`${logo}?w=150&h=150&fit=crop&auto=format`}
                                 srcSet={`${logo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
@@ -50,8 +51,8 @@ function Navbar() {
                                 loading="lazy"
                                 style={{ width: "100%" }}
                             />
-                        </Box>
-                    </Link>
+                        </Link>
+                    </Box>
                     <Box sx={{ display: "flex", flexDirection: "column" }}>
                         <Box
                             sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "0.9rem", fontWeight: "bold", display: { xs: "none", sm: "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "20px" }}
