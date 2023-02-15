@@ -10,9 +10,9 @@ Marka, model kismi eklenecek. DONE
 Filtrelemeler yapilacak. DONE
 
 //Dashboard
-Kategori icin dropdown menu yapılabilir. (Dropdown menu yapildi, icerigi dolu, yonlendirme yok.)
-Kategorilere gore sayfalarda filtreli urunler gosterilebilir. (CategoryPage sayfasi)
-Dashboard -> slider,tum urunler,kategorilerine gore bolumler 
+Kategori icin dropdown menu yapılabilir. (Dropdown menu yapildi, icerigi dolu, yonlendirme yok.) DONE
+Kategorilere gore sayfalarda filtreli urunler gosterilebilir. (CategoryPage sayfasi) DONE
+Dashboard -> slider,tum urunler,kategorilerine gore bolumler.
 (tum urunler icin 3 satir falan gosterip butun urunleri goster butonu olabilir, ayni sekilde kategorilerine gore bolumler icin de)
 (daha sonra categorypage'e yonlendiririz)
 ProductPage yapilacak(ornek olarak muammer abi atti) DONE ama eksikler var.
