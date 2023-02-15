@@ -29,24 +29,22 @@ function ProductPage() {
                         <Box
                             sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "15px" }}
                         >
-                            <figure>
-                                <Zoom>
-                                    <Box sx={{
-                                        width: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
-                                        height: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
-                                        border: "2px solid #ddd",
-                                        '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
-                                        borderRadius: "5px"
-                                    }}>
-                                        <ZoomInIcon sx={{ width: "35px", height: "35px", position: "absolute", top: "10px", right: "10px" }} />
-                                        <img
-                                            src={product.images[active]}
-                                            style={{ width: "100%", height: "100%" }}
-                                            alt={product.images[active]}
-                                        />
-                                    </Box>
-                                </Zoom>
-                            </figure>
+                            <Zoom>
+                                <Box sx={{
+                                    width: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
+                                    height: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
+                                    border: "2px solid #ddd",
+                                    '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
+                                    borderRadius: "5px"
+                                }}>
+                                    <ZoomInIcon sx={{ width: "35px", height: "35px", position: "absolute", top: "10px", right: "10px" }} />
+                                    <img
+                                        src={product.images[active]}
+                                        style={{ width: "100%", height: "100%" }}
+                                        alt={product.images[active]}
+                                    />
+                                </Box>
+                            </Zoom>
                             <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                                 {product.images.map((image, index) => {
                                     return (
