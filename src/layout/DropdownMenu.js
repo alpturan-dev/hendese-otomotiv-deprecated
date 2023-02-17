@@ -44,6 +44,7 @@ export default function DropdownMenu() {
         <div>
             <Box
                 sx={{
+                    cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     paddingBottom: "10px",
@@ -54,6 +55,7 @@ export default function DropdownMenu() {
                     backgroundPosition: "right -100% bottom 0",
                     backgroundSize: "200% 2px",
                     backgroundRepeat: "no-repeat",
+                    transition: "color 1s ease-in-out",
                     '&:hover': {
                         color: "primary.main",
                         backgroundPosition: "left -100% bottom 0",

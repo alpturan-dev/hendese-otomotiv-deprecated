@@ -47,7 +47,7 @@ function Navbar() {
                     maxWidth="lg"
                     sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "0 5px 20px 5px", bgcolor: "secondary.main", }}
                 >
-                    <Box sx={{ margin: { xs: "20px auto", sm: "20px auto", md: "0", lg: "0" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "140px", sm: "140px", md: "150px", lg: "170px" }, height: { xs: "90px", sm: "90px", md: "95px", lg: "100px" } }}>
+                    <Box sx={{ margin: { xs: "20px auto", sm: "20px auto", md: "0", lg: "0" }, paddingTop: { xs: "0", sm: "0", md: "20px", lg: "20px" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "140px", sm: "140px", md: "150px", lg: "190px" }, height: { xs: "90px", sm: "90px", md: "95px", lg: "120px" } }}>
                         <Link href="/">
                             <img
                                 src={`${logo}?w=150&h=150&fit=crop&auto=format`}
@@ -104,7 +104,7 @@ function Navbar() {
                             </Shake>
                         </Box> */}
                         <Box
-                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "0.9rem", fontWeight: "bold", display: { xs: "none", sm: "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: "center", gap: "40px", padding: "15px 0 15px 0" }}
+                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "0.9rem", fontWeight: "bold", display: { xs: "none", sm: "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: "center", gap: "40px", padding: "15px 0 8px 0" }}
                         >
                             <li style={{
                                 display: "flex",
@@ -122,6 +122,7 @@ function Navbar() {
                                     backgroundPosition: "right -100% bottom 0",
                                     backgroundSize: "200% 2px",
                                     backgroundRepeat: "no-repeat",
+                                    transition: "color 1s ease-in-out",
                                     '&:hover': {
                                         color: "primary.main",
                                         backgroundPosition: "left -100% bottom 0",
@@ -148,6 +149,7 @@ function Navbar() {
                                     backgroundPosition: "right -100% bottom 0",
                                     backgroundSize: "200% 2px",
                                     backgroundRepeat: "no-repeat",
+                                    transition: "color 1s ease-in-out",
                                     '&:hover': {
                                         color: "primary.main",
                                         backgroundPosition: "left -100% bottom 0",
@@ -170,6 +172,7 @@ function Navbar() {
                                     backgroundPosition: "right -100% bottom 0",
                                     backgroundSize: "200% 2px",
                                     backgroundRepeat: "no-repeat",
+                                    transition: "color 1s ease-in-out",
                                     '&:hover': {
                                         color: "primary.main",
                                         backgroundPosition: "left -100% bottom 0",
@@ -192,6 +195,7 @@ function Navbar() {
                                     backgroundPosition: "right -100% bottom 0",
                                     backgroundSize: "200% 2px",
                                     backgroundRepeat: "no-repeat",
+                                    transition: "color 1s ease-in-out",
                                     '&:hover': {
                                         color: "primary.main",
                                         backgroundPosition: "left -100% bottom 0",
@@ -235,7 +239,7 @@ function Navbar() {
                         borderTop: "117px solid #ddd",
                         borderRight: "60px solid #f7f7f7"
                     }}></Box>
-                    <Box sx={{ display: { xs: "none", sm: "none", md: "flex", lg: "flex" }, alignItems: "center", width: { xs: "80px", sm: "80px", md: "80px", lg: "100px" }, height: { xs: "90px", sm: "90x", md: "95px", lg: "115px" } }}>
+                    <Box sx={{ display: { xs: "none", sm: "none", md: "flex", lg: "flex" }, alignItems: "center", width: { xs: "80px", sm: "80px", md: "80px", lg: "110px" }, height: { xs: "90px", sm: "90x", md: "95px", lg: "125px" }, paddingTop: { xs: "0", sm: "0", md: "10px", lg: "10px" } }}>
                         <img
                             src={`${suzukilogo}?w=150&h=150&fit=crop&auto=format`}
                             srcSet={`${suzukilogo}?w=150&h=150&fit=crop&auto=format&dpr=2 2x`}
