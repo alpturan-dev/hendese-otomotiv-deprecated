@@ -15,7 +15,7 @@ function Navbar() {
                 sx={{
                     display: "flex",
                     justifyContent: "center",
-                    padding: "15px 0",
+                    padding: "10px 0",
                     backgroundColor: "primary.main",
                     color: "#fff",
                     transition: "0.5s",
@@ -24,7 +24,7 @@ function Navbar() {
                     },
                 }}
             >
-                <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, gap: { xs: "5px", sm: "5px", md: "30px", lg: "40px" }, fontSize: { xs: "0.6rem", sm: "0.6rem", md: "0.6rem", lg: "0.7rem" } }}>
+                <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, gap: { xs: "5px", sm: "5px", md: "30px", lg: "40px" }, fontSize: { xs: "0.6rem", sm: "0.6rem", md: "0.7rem", lg: "0.8rem" } }}>
                     <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
                         <LocationOnRoundedIcon />Arifbey, Adnan Menderes Caddesi No:33A, 54580 Arifiye/SAKARYA
                     </Box>
@@ -39,9 +39,8 @@ function Navbar() {
             <Box sx={{ bgcolor: "secondary.main" }} id="page-wrap">
                 <Container
                     maxWidth="lg"
-                    sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "20px 5px", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}
+                    sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "15px 5px", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}
                 >
-
                     <Box sx={{ margin: { xs: "auto", sm: "auto", md: "0", lg: "0" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "130px", sm: "130px", md: "130px", lg: "180px" }, height: { xs: "80px", sm: "80px", md: "80px", lg: "100px" } }}>
                         <Link href="/">
                             <img

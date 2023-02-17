@@ -117,7 +117,6 @@ function AdminPanel() {
                     reverseOrder={false}
                 />
                 <Container maxWidth="lg" sx={{ marginTop: "10px" }}>
-                    {/* Navbar */}
                     <Box
                         sx={{ padding: "20px 0", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "2px solid #ddd" }}
                     >

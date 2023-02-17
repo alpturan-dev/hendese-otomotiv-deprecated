@@ -34,8 +34,8 @@ function CategoryPage() {
                 reverseOrder={false}
             />
             <Box sx={{ bgcolor: "secondary.main" }}>
-                <Container sx={{ paddingY: "40px" }}>
-                    <Typography variant='h5' sx={{ paddingBottom: "20px", textDecoration: "underline", textUnderlineOffset: "8px" }}>
+                <Container sx={{ paddingBottom: "40px", paddingTop: "20px" }}>
+                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "8px" }}>
                         {categoryName}
                     </Typography>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ marginX: "auto" }}>
