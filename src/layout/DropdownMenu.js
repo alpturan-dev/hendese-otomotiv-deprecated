@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { useContext } from 'react';
 import SparePartContext from '../context/SparePartContext';
+import { makeStyles } from '@mui/styles';
 
 export default function DropdownMenu() {
     const { categories } = useContext(SparePartContext);
@@ -18,16 +19,27 @@ export default function DropdownMenu() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    const [isHovered, setIsHovered] = React.useState();
-
-    const hoverIcon = () => {
-        setIsHovered(true)
+    const useStyles = makeStyles({
+        popOverRoot: {
+            pointerEvents: "none"
+        }
+    });
+    let currentlyHovering = false;
+    const styles = useStyles();
+    function handleHover() {
+        currentlyHovering = true;
     }
 
-    const leaveIcon = () => {
-        setIsHovered(false)
+    function handleCloseHover() {
+        currentlyHovering = false;
+        setTimeout(() => {
+            if (!currentlyHovering) {
+                handleClose();
+            }
+        }, 50);
     }
+
+
     return (
         <div>
             <Box
@@ -52,19 +64,28 @@ export default function DropdownMenu() {
                 aria-controls={open ? 'fade-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
                 onMouseOver={handleClick}
+                onMouseLeave={handleCloseHover}
             >
                 Yedek Parça
                 <ArrowDropDownIcon />
             </Box>
             <Menu
-                id="fade-menu"
+                sx={{ cursor: "pointer" }}
+                id="simple-menu"
                 anchorEl={anchorEl}
-                open={open}
+                open={Boolean(anchorEl)}
                 onClose={handleClose}
-                TransitionComponent={Fade}
-                sx={{
-                    cursor: "pointer",
+                MenuListProps={{
+                    onMouseEnter: handleHover,
+                    onMouseLeave: handleCloseHover,
+                    style: { pointerEvents: "auto" }
+                }}
+                getContentAnchorEl={null}
+                anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
+                PopoverClasses={{
+                    root: styles.popOverRoot
                 }}
             >
                 <Link href="/kategori/Tüm Yedek Parçalar" sx={{ color: "inherit", textDecoration: "none" }}>
