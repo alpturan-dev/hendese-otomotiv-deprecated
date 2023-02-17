@@ -19,28 +19,39 @@ export default function DropdownMenu() {
         setAnchorEl(null);
     };
 
+    const [isHovered, setIsHovered] = React.useState();
+
+    const hoverIcon = () => {
+        setIsHovered(true)
+    }
+
+    const leaveIcon = () => {
+        setIsHovered(false)
+    }
     return (
         <div>
             <Box
                 sx={{
-                    paddingX: "2px",
                     display: "flex",
                     alignItems: "center",
+                    paddingBottom: "10px",
+                    paddingX: "2px",
                     textDecoration: "none",
                     color: "black",
-                    borderBottom: "0 solid #ed3137",
-                    transition: "border .2s ease-in-out",
-                    cursor: "pointer",
+                    backgroundImage: "linear-gradient(#ed3137 0 0)",
+                    backgroundPosition: "right -100% bottom 0",
+                    backgroundSize: "200% 2px",
+                    backgroundRepeat: "no-repeat",
                     '&:hover': {
                         color: "primary.main",
-                        borderWidth: "4px",
+                        backgroundPosition: "left -100% bottom 0",
+                        transition: "background-position 1s"
                     }
                 }}
                 id="fade-button"
                 aria-controls={open ? 'fade-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
                 onMouseOver={handleClick}
             >
                 Yedek Parça
@@ -48,7 +59,6 @@ export default function DropdownMenu() {
             </Box>
             <Menu
                 id="fade-menu"
-                MenuListProps={{ onMouseLeave: handleClose }}
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}

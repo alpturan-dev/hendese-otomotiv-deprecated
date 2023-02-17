@@ -10,6 +10,7 @@ import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../firebase'
 import FloatingWhatsApp from '../layout/FloatingWhatsApp'
 import { toast, Toaster } from 'react-hot-toast';
+import SearchAppBar from '../components/SearchBar';
 
 function Dashboard() {
     const { products, setProducts } = useContext(UserContext);
@@ -38,11 +39,15 @@ function Dashboard() {
                     position="top-center"
                     reverseOrder={false}
                 />
-                {/* <Box sx={{ height: "500px" }}>
+                <Box sx={{ height: "500px" }}>
                     <Slider />
-                </Box> */}
+                </Box>
                 <Container sx={{ paddingBottom: "40px", paddingTop: "20px" }}>
                     <h1 style={{ display: "none" }}>Tüm Suzuki Yedek Parçalar</h1>
+                    <Box sx={{ border: "1px solid #ddd", margin: "0 0 30px 0", borderRadius: "5px", width: "50%", left: "0" }}>
+                        <SearchAppBar />
+
+                    </Box>
                     <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "5px", marginBottom: "20px" }}>
                         Tüm Suzuki Yedek Parçalar
                     </Typography>

@@ -52,7 +52,7 @@ export default function SearchAppBar() {
         console.log(input)
     }
     return (
-        <Search sx={{ padding: "10px 0", display: "flex", alignItems: "center", background: "#ddd" }}>
+        <Search sx={{ padding: "10px 0", display: "flex", alignItems: "center", background: "#f7f7f7" }}>
             <SearchIconWrapper>
                 <SearchIcon />
             </SearchIconWrapper>

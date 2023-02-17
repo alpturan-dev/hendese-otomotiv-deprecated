@@ -17,4 +17,6 @@ Dashboard -> slider,tum urunler,kategorilerine gore bolumler.
 (daha sonra categorypage'e yonlendiririz)
 ProductPage yapilacak(ornek olarak muammer abi atti) DONE ama eksikler var.
 Footer yapilmali. DONE
+Telefon numarasini koyacak yer bul.
+Dashboardda kategorilere gore grid tarzi fotografli bolum olabilir.
 

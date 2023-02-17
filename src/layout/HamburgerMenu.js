@@ -1,5 +1,6 @@
 import React from 'react'
 import Menu from 'react-burger-menu/lib/menus/stack'
+import HomeIcon from '@mui/icons-material/Home';
 import { Box, Link } from '@mui/material';
 import { Shake } from 'reshake';
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded';
@@ -11,7 +12,7 @@ function HamburgerMenu({ pageWrapId, outerContainerId }) {
             width: '28px',
             height: '20px',
             left: '36px',
-            top: '115px'
+            top: '55px'
         },
         bmBurgerBars: {
             background: '#373a47'
@@ -55,73 +56,101 @@ function HamburgerMenu({ pageWrapId, outerContainerId }) {
             <Box
                 sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "0.9rem", fontWeight: "bold", display: "flex", flexDirection: "column", alignItems: "start", gap: "30px" }}
             >
-                <Box>
+                <li style={{
+                    display: "flex",
+                    alignItems: "center",
+                }}>
                     <Link href="/" sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
                         paddingBottom: "10px",
                         paddingX: "2px",
                         textDecoration: "none",
                         color: "black",
-                        borderBottom: "0 solid #ed3137",
-                        transition: "border .2s ease-in-out",
+                        backgroundImage: "linear-gradient(#ed3137 0 0)",
+                        backgroundPosition: "right -100% bottom 0",
+                        backgroundSize: "200% 2px",
+                        backgroundRepeat: "no-repeat",
                         '&:hover': {
                             color: "primary.main",
-                            borderWidth: "4px"
+                            backgroundPosition: "left -100% bottom 0",
+                            transition: "background-position 1s"
                         }
                     }}>
+                        <HomeIcon />
                         Anasayfa
                     </Link>
-                </Box>
-                <Box>
+                </li>
+                <li>
                     <DropdownMenu />
-                </Box>
-                <Box>
+                </li>
+                <li>
                     <Link href="#" sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
                         paddingBottom: "10px",
                         paddingX: "2px",
                         textDecoration: "none",
                         color: "black",
-                        borderBottom: "0 solid #ed3137",
-                        transition: "border .2s ease-in-out",
+                        backgroundImage: "linear-gradient(#ed3137 0 0)",
+                        backgroundPosition: "right -100% bottom 0",
+                        backgroundSize: "200% 2px",
+                        backgroundRepeat: "no-repeat",
                         '&:hover': {
                             color: "primary.main",
-                            borderWidth: "4px"
+                            backgroundPosition: "left -100% bottom 0",
+                            transition: "background-position 1s"
                         }
                     }}>
                         Teknik Bilgiler
                     </Link>
-                </Box>
-                <Box>
+                </li>
+                <li>
                     <Link href="#" sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
                         paddingBottom: "10px",
                         paddingX: "2px",
                         textDecoration: "none",
                         color: "black",
-                        borderBottom: "0 solid #ed3137",
-                        transition: "border .2s ease-in-out",
+                        backgroundImage: "linear-gradient(#ed3137 0 0)",
+                        backgroundPosition: "right -100% bottom 0",
+                        backgroundSize: "200% 2px",
+                        backgroundRepeat: "no-repeat",
                         '&:hover': {
                             color: "primary.main",
-                            borderWidth: "4px"
+                            backgroundPosition: "left -100% bottom 0",
+                            transition: "background-position 1s"
                         }
                     }}>
                         Hakkımızda
                     </Link>
-                </Box>
-                <Box>
-                    <Link href="/contact" sx={{
+                </li>
+                <li>
+                    <Link href="/iletisim" sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
                         paddingBottom: "10px",
                         paddingX: "2px",
                         textDecoration: "none",
                         color: "black",
-                        borderBottom: "0 solid #ed3137",
-                        transition: "border .2s ease-in-out",
+                        backgroundImage: "linear-gradient(#ed3137 0 0)",
+                        backgroundPosition: "right -100% bottom 0",
+                        backgroundSize: "200% 2px",
+                        backgroundRepeat: "no-repeat",
                         '&:hover': {
                             color: "primary.main",
-                            borderWidth: "4px"
+                            backgroundPosition: "left -100% bottom 0",
+                            transition: "background-position 1s"
                         }
                     }}>
                         İletişim
                     </Link>
-                </Box>
+                </li>
                 <Shake h={3} v={0} r={3}>
                     <a style={{ textDecoration: "none" }} href="tel:05303604105">
                         <Box

@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     element: <ProductPage />
   },
   {
-    path: "/contact",
+    path: "/iletisim",
     element: <Contact />
   },
   {
