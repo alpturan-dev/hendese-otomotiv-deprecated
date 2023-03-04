@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
-import { Modal, Box, Typography, Button, TextField } from '@mui/material';
+import { useState, useEffect } from 'react'
+import { Modal, Box, Typography, Button, TextField, Checkbox } from '@mui/material';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
 import { v4 } from "uuid";
@@ -27,6 +27,13 @@ function AddProductModal({ addProduct }) {
         setNewProductOEM,
         setNewProductPrice,
     } = useContext(ModalContext);
+
+    useEffect(() => {
+        setIsUploaded(false)
+    }, [])
+
+    const [priceField, setPriceField] = useState(false);
+
     const [isUploaded, setIsUploaded] = useState(false);
     const [imageFiles, setImageFiles] = useState([]);
     const handleImage = (e) => {
@@ -50,6 +57,7 @@ function AddProductModal({ addProduct }) {
                 });
         })
         setIsUploaded(true);
+        setImageFiles([])
         toast.success("Resimler yüklendi!");
     }
     return (
@@ -78,8 +86,8 @@ function AddProductModal({ addProduct }) {
                 }}>
                 <Button
                     sx={{
-                        position: "absolute", right: "2%", top: "3%", display: "flex", flexDirection: "row-reverse", justifyContent: "center", width: "5%", marginRight: "0",
-                        backgroundColor: "#ED3137", color: "white", padding: "6px 4px", fontSize: "1.1rem",
+                        position: "absolute", right: "2%", top: "3%", display: "flex", flexDirection: "row-reverse", justifyContent: "center", height: "40px", marginRight: "0",
+                        backgroundColor: "#ED3137", color: "white", padding: "6px 0px",
                         '&:hover': {
                             cursor: "pointer",
                             backgroundColor: "#ED3137",
@@ -87,10 +95,9 @@ function AddProductModal({ addProduct }) {
                             opacity: "0.9"
                         }
                     }}
-
                     onClick={handleClose} alt="Kapat"
                 >
-                    <CloseIcon />
+                    <CloseIcon sx={{ width: "20px", height: "20px" }} />
                 </Button>
                 <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
                     <Typography id="modal-modal-title" variant="h4"
@@ -194,9 +201,34 @@ function AddProductModal({ addProduct }) {
                                 sx={{ fontWeight: "bolder", textDecoration: "underline" }}>
                                 Fiyatı (₺)
                             </Typography>
-                            <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} color="secondary" required autoComplete="off" fullWidth id="standard-basic" variant="filled"
-                                onChange={(event) => setNewProductPrice(event.target.value)}
-                            />
+                            <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
+                                <TextField disabled={priceField && true}
+                                    inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                                    sx={{ backgroundColor: priceField && "#ddd" }}
+                                    color="secondary"
+                                    required
+                                    autoComplete="off"
+                                    fullWidth
+                                    id="standard-basic"
+                                    variant="filled"
+                                    onChange={(event) => setNewProductPrice(event.target.value)}
+                                />
+                                <input
+                                    type="checkbox"
+                                    name="price"
+                                    id="price"
+                                    style={{
+                                        textAlign: "center",
+                                        cursor: "pointer",
+                                        backgroundColor: "gray", color: "white", padding: "15px 12px", fontSize: "0.7rem",
+                                    }}
+                                    onClick={() => {
+                                        setPriceField((prev) => !prev);
+                                        setNewProductPrice("Fiyat Sorunuz")
+                                    }}>
+                                </input>
+                                <label htmlFor="price" style={{ cursor: "pointer", }}>Fiyat Sorunuz</label>
+                            </Box>
                         </Box>
                         <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                             <Typography id="modal-modal-title" variant="h6"

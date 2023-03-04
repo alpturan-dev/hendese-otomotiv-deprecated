@@ -17,7 +17,7 @@ export default function SelectVariants() {
 
     return (
         <div>
-            <FormControl variant="filled" sx={{ m: 1, minWidth: 230 }}>
+            <FormControl variant="filled" sx={{ minWidth: 230 }}>
                 <InputLabel id="demo-simple-select-standard-label">Model</InputLabel>
                 <Select
                     value={filterModel}

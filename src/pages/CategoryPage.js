@@ -18,7 +18,11 @@ function CategoryPage() {
             toast.loading("");
             const data = await getDocs(productsRef);
             const displaydata = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-            setFilteredProducts(displaydata.filter((product) => (product.category === categoryName)))
+            if (categoryName === "Tüm Yedek Parçalar") {
+                setFilteredProducts(displaydata);
+            } else {
+                setFilteredProducts(displaydata.filter((product) => (product.category === categoryName)))
+            }
         }
         getProducts();
         toast.dismiss();

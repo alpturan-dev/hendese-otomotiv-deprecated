@@ -42,37 +42,49 @@ function Dashboard() {
                 <Box sx={{ height: "500px" }}>
                     <Slider />
                 </Box>
-                <Container sx={{ paddingBottom: "40px", paddingTop: "20px" }}>
-                    <h1 style={{ display: "none" }}>Tüm Suzuki Yedek Parçalar</h1>
-                    <Box sx={{ border: "1px solid #ddd", margin: "0 0 30px 0", borderRadius: "5px", width: "50%", left: "0" }}>
-                        <SearchAppBar />
-
+                <Container sx={{ paddingBottom: "40px", paddingTop: "20px", display: "flex", gap: "20px" }}>
+                    <Box sx={{ width: "20%" }}>
+                        Blabla
                     </Box>
-                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "5px", marginBottom: "20px" }}>
-                        Tüm Suzuki Yedek Parçalar
-                    </Typography>
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                        {products.map((product, index) => (
-                            <ProductCard key={index} product={product} />
-                        ))}
-                    </Grid>
-                    {categories.map((category, index) => {
-                        const filteredProducts = products.filter((product) => (product.category === category));
-                        return (
-                            filteredProducts.length > 0 && (
-                                <div key={index}>
-                                    <Typography variant='h5' sx={{ textDecoration: "underline", textUnderlineOffset: "8px", marginY: "20px" }}>
-                                        {category}
-                                    </Typography>
-                                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ marginX: "auto" }}>
-                                        {filteredProducts.map((product, index) => (
-                                            <ProductCard key={index} product={product} />
-                                        ))}
-                                    </Grid>
-                                </div>
+                    <Box sx={{ width: "80%" }}>
+                        <h1 style={{ display: "none" }}>Tüm Suzuki Yedek Parçalar</h1>
+                        <Box sx={{ border: "1px solid #ddd", margin: "0 0 30px 0", borderRadius: "5px", width: "50%", left: "0" }}>
+                            <SearchAppBar />
+                        </Box>
+                        <Typography variant='h5' sx={{ marginBottom: "10px", fontWeight: "bolder" }}>
+                            Tüm Suzuki Yedek Parçalar
+                        </Typography>
+                        <hr />
+                        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ marginY: "20px" }}>
+                            {products.map((product, index) => (
+                                <ProductCard key={index} product={product} />
+                            ))}
+                        </Grid>
+                        {categories.map((category, index) => {
+                            const filteredProducts = products.filter((product) => (product.category === category));
+                            return (
+                                filteredProducts.length > 0 && (
+                                    <div key={index}>
+                                        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                            <Typography variant='h5' sx={{ marginY: "10px", fontWeight: "bolder" }}>
+                                                {category}
+                                            </Typography>
+                                            <Typography >
+                                                Diger urunler
+                                            </Typography>
+                                        </Box>
+                                        <hr style={{ color: "gray", opacity: "0.6" }} />
+                                        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ marginX: "auto", marginY: "20px" }}>
+                                            {filteredProducts.map((product, index) =>
+                                            (
+                                                <ProductCard key={index} product={product} />
+                                            ))}
+                                        </Grid>
+                                    </div>
+                                )
                             )
-                        )
-                    })}
+                        })}
+                    </Box>
                 </Container>
             </Box>
             <FloatingWhatsApp />

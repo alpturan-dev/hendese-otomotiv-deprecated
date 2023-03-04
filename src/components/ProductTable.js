@@ -53,7 +53,7 @@ function ProductTable({ deleteProduct }) {
                             <TableCell align="left">{product.description}</TableCell>
                             <TableCell align="left">{product.stock}</TableCell>
                             <TableCell align="left">{product.oem}</TableCell>
-                            <TableCell align="left">{product.price}₺</TableCell>
+                            <TableCell align="left">{product.price}</TableCell>
                             <TableCell align="left">{product.category}</TableCell>
                             <TableCell align="left">
                                 <Button onClick={() => {

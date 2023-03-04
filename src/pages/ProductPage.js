@@ -12,38 +12,73 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useLocation } from 'react-router-dom';
 import Footer from '../layout/Footer'
 import FloatingWhatsApp from '../layout/FloatingWhatsApp'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+
 function ProductPage() {
     const location = useLocation();
     const product = location.state;
     const [active, setActive] = useState(0);
     function handleActive(index) {
+        console.log("length", product.images.length)
         setActive(index);
+    }
+    function handlePrevious() {
+        setActive((prevState) => {
+            console.log(prevState)
+            if (prevState - 1 < 0) {
+                return (product.images.length - 1)
+            } else {
+                return (prevState - 1)
+            }
+        });
+    }
+    function handleNext() {
+        setActive((prevState) => {
+            console.log(prevState)
+            if (prevState + 1 === product.images.length) {
+                return 0
+            } else {
+                return (prevState + 1)
+            }
+        });
     }
     return (
         <>
             <Navbar />
             <Box sx={{ bgcolor: "secondary.main" }}>
                 <Container sx={{ paddingY: "50px", height: "100%" }}>
-                    <Box sx={{ paddingBottom: "100px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", justifyContent: { xs: "center", sm: "center", md: "space-between", lg: "space-between" }, gap: { xs: "40px", sm: "40px", md: "100px", lg: "100px" } }}>
+                    <Box sx={{ paddingBottom: "100px", display: "flex", flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, justifyContent: { xs: "center", sm: "center", md: "space-between", lg: "space-between" }, gap: { xs: "40px", sm: "40px", md: "100px", lg: "100px" } }}>
                         <Box
                             sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "15px" }}
                         >
-                            <Zoom>
-                                <Box sx={{
-                                    width: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
-                                    height: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
-                                    border: "2px solid #ddd",
-                                    '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
-                                    borderRadius: "5px"
-                                }}>
-                                    <ZoomInIcon sx={{ width: "30px", height: "30px", position: "absolute", top: "10px", right: "10px" }} />
-                                    <img
-                                        src={product.images[active]}
-                                        style={{ width: "100%", height: "100%" }}
-                                        alt={product.images[active]}
-                                    />
-                                </Box>
-                            </Zoom>
+                            <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+                                <KeyboardArrowLeftIcon
+                                    sx={{ width: "40px", cursor: "pointer", height: "100%", margin: "auto 0" }}
+                                    onClick={handlePrevious}
+
+                                />
+                                <Zoom>
+                                    <Box sx={{
+                                        width: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
+                                        height: { xs: "360px", sm: "425px", md: "425px", lg: "455px" },
+                                        border: "2px solid #ddd",
+                                        '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
+                                        borderRadius: "5px"
+                                    }}>
+                                        <ZoomInIcon sx={{ width: "30px", height: "30px", position: "absolute", top: "10px", right: "10px" }} />
+                                        <img
+                                            src={product.images[active]}
+                                            style={{ width: "100%", height: "100%" }}
+                                            alt={product.images[active]}
+                                        />
+                                    </Box>
+                                </Zoom>
+                                <KeyboardArrowRightIcon
+                                    onClick={handleNext}
+                                    sx={{ width: "40px", cursor: "pointer", height: "100%", margin: "auto 0" }}
+                                />
+                            </Box>
                             <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                                 {product.images.map((image, index) => {
                                     return (
@@ -53,8 +88,8 @@ function ProductPage() {
                                             sx={{
                                                 width: { xs: "80px", sm: "80px", md: "100px", lg: "100px" },
                                                 height: { xs: "80px", sm: "80px", md: "100px", lg: "100px" },
-                                                border: "2px solid #ddd",
-                                                '&:hover': { border: "3px solid gray" }, transition: "0.1s ease-in-out",
+                                                border: index === active ? "5px solid #ddd" : "2px solid #ddd",
+                                                transition: "0.1s ease-in-out",
                                                 borderRadius: "5px"
                                             }}>
                                             <img style={{ width: "100%", height: "100%" }} src={image} alt={image} />
@@ -76,7 +111,7 @@ function ProductPage() {
                                     <Box sx={{ display: "flex", justifyContent: "space-between", borderRadius: "3px" }}>
                                         <Typography sx={{ display: "flex", alignItems: "center", fontWeight: "bold", gap: "10px" }} variant="h4">
                                             <SellIcon sx={{ color: "primary.main" }} />
-                                            {product.price}₺
+                                            {product.price}
                                         </Typography>
                                     </Box>
                                     <Typography sx={{ display: "flex", alignItems: "center", fontWeight: "light", gap: "10px" }}>
@@ -104,10 +139,10 @@ function ProductPage() {
                                                 }
                                             }}
                                         >
-                                            <a href="tel:05303604105" style={{ display: "flex", alignItems: "center", flexDirection: "column", gap: "10px", color: "#f7f7f7", textDecoration: "none" }}>
+                                            <a href="tel:05303604105" style={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "10px", color: "#f7f7f7", textDecoration: "none" }}>
                                                 <Typography sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
                                                     <ShoppingBasketIcon />
-                                                    Hemen Ara!
+                                                    {/* Hemen Ara! */}
                                                 </Typography>
                                                 +90 530 360 41 05
                                             </a>
@@ -116,8 +151,7 @@ function ProductPage() {
                                             sx={{
                                                 cursor: "pointer",
                                                 width: "40%",
-                                                height: "100%",
-                                                margin: "auto 0",
+                                                height: "90px",
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",

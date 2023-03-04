@@ -19,4 +19,6 @@ ProductPage yapilacak(ornek olarak muammer abi atti) DONE ama eksikler var.
 Footer yapilmali. DONE
 Telefon numarasini koyacak yer bul.
 Dashboardda kategorilere gore grid tarzi fotografli bolum olabilir.
+Dashbord filter side section.
+Hangi sayfada oldugumuza gore navbarda active link rengi degistirme.
 

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { memo } from 'react';
 import { Shake } from 'reshake';
 import HamburgerMenu from './HamburgerMenu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -13,6 +14,9 @@ function Navbar() {
     const options = [
         'one', 'two', 'three'
     ];
+    useEffect(() => {
+        console.log("navbar rendered")
+    })
     const defaultOption = options[0];
     return (
         <React.Fragment>
@@ -47,7 +51,9 @@ function Navbar() {
                     maxWidth="lg"
                     sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "0 5px 20px 5px", bgcolor: "secondary.main", }}
                 >
-                    <Box sx={{ margin: { xs: "20px auto", sm: "20px auto", md: "0", lg: "0" }, paddingTop: { xs: "0", sm: "0", md: "20px", lg: "20px" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "140px", sm: "140px", md: "150px", lg: "190px" }, height: { xs: "90px", sm: "90px", md: "95px", lg: "120px" } }}>
+                    <Box
+                        sx={{ margin: { xs: "20px auto", sm: "20px auto", md: "0 0", lg: "0 0" }, paddingTop: { xs: "0", sm: "0", md: "20px", lg: "20px" }, display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", width: { xs: "140px", sm: "140px", md: "150px", lg: "190px" }, height: { xs: "90px", sm: "90px", md: "95px", lg: "120px" } }}
+                    >
                         <Link href="/">
                             <img
                                 src={`${logo}?w=150&h=150&fit=crop&auto=format`}
@@ -129,7 +135,7 @@ function Navbar() {
                                         transition: "background-position 1s"
                                     }
                                 }}>
-                                    <HomeIcon />
+                                    <HomeIcon sx={{ color: "primary.main" }} />
                                     Anasayfa
                                 </Link>
                             </li>
@@ -249,110 +255,9 @@ function Navbar() {
                         />
                     </Box>
                 </Container>
-                {/* <Container maxWidth="lg"
-                    sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", bgcolor: "secondary.main", borderBottom: "2px solid #ddd" }}>
-                    <Box sx={{ display: "flex", flexDirection: "column", paddingTop: "0px" }}>
-                        <Box
-                            sx={{ transition: "1s", listStyle: "none", textDecoration: "none", fontSize: "0.9rem", fontWeight: "bold", display: { xs: "none", sm: "none", md: "flex", lg: "flex" }, flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" }, alignItems: "center", gap: "20px", padding: "15px 0 15px 0" }}
-                        >
-                            <li>
-                                <Link href="/" sx={{
-                                    paddingBottom: "10px",
-                                    paddingX: "2px",
-                                    textDecoration: "none",
-                                    color: "black",
-                                    borderBottom: "0 solid #ed3137",
-                                    transition: "border .2s ease-in-out",
-                                    '&:hover': {
-                                        color: "primary.main",
-                                        borderWidth: "4px"
-                                    }
-                                }}>
-                                    Anasayfa
-                                </Link>
-                            </li>
-                            <li>
-                                <DropdownMenu />
-                            </li>
-                            <li>
-                                <Link href="#" sx={{
-                                    paddingBottom: "10px",
-                                    paddingX: "2px",
-                                    textDecoration: "none",
-                                    color: "black",
-                                    borderBottom: "0 solid #ed3137",
-                                    transition: "border .2s ease-in-out",
-                                    '&:hover': {
-                                        color: "primary.main",
-                                        borderWidth: "4px"
-                                    }
-                                }}>
-                                    Teknik Bilgiler
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" sx={{
-                                    paddingBottom: "10px",
-                                    paddingX: "2px",
-                                    textDecoration: "none",
-                                    color: "black",
-                                    borderBottom: "0 solid #ed3137",
-                                    transition: "border .2s ease-in-out",
-                                    '&:hover': {
-                                        color: "primary.main",
-                                        borderWidth: "4px"
-                                    }
-                                }}>
-                                    Hakkımızda
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" sx={{
-                                    paddingBottom: "10px",
-                                    paddingX: "2px",
-                                    textDecoration: "none",
-                                    color: "black",
-                                    borderBottom: "0 solid #ed3137",
-                                    transition: "border .2s ease-in-out",
-                                    '&:hover': {
-                                        color: "primary.main",
-                                        borderWidth: "4px"
-                                    }
-                                }}>
-                                    İletişim
-                                </Link>
-                            </li>
-                            {/* <Shake h={3} v={0} r={3}>
-                                <a style={{ textDecoration: "none" }} href="tel:05303604105">
-                                    <Box
-                                        sx={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            color: "primary.main",
-                                            gap: "10px",
-                                            transition: "0.5s",
-                                            padding: "15px 10px",
-                                            borderRadius: "5px 5px 0 0",
-                                            borderBottom: "2px solid #ed3137",
-                                            '&:hover': {
-                                                backgroundColor: "primary.main",
-                                                color: "secondary.main",
-                                                cursor: "pointer"
-                                            }
-                                        }}
-                                    >
-                                        <PhoneInTalkRoundedIcon />
-                                        +90 530 360 41 05
-                                    </Box>
-                                </a>
-                            </Shake> 
-                        </Box>
-                    </Box>
-                </Container> */}
-            </Box >
-        </React.Fragment >
+            </Box>
+        </React.Fragment>
     )
 }
 
-export default Navbar
+export default memo(Navbar)
