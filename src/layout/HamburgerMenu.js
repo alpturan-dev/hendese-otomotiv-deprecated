@@ -12,7 +12,7 @@ function HamburgerMenu({ pageWrapId, outerContainerId }) {
             width: '28px',
             height: '20px',
             left: '36px',
-            top: '55px'
+            top: '125px'
         },
         bmBurgerBars: {
             background: '#373a47'

@@ -3,6 +3,8 @@ Resim eklemeyi Firestore ve storage ile yapmayi dene. DONE
 Admin panelin cikisinda bug var o duzeltilecek.. DONE
 
 
+//Navbar primary renk degisimi
+
 //Admin paneli
 Urun stok adedi, urun kodu (OEM kodu),fiyat kısmı,kategori kısmı eklenicek. DONE
 Urun ekleme modali duzenlenecek. DONE
